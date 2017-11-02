@@ -44,7 +44,7 @@ export class ItemCreatePage {
         targetWidth: 96,
         targetHeight: 96 
       }).then((data) => {
-        this.form.patchValue({ 'profilePic': 'data:image/jpg;base64,' + data });
+        this.form.patchValue({ 'profilePic': 'data:image/jpeg;base64,' + data });
       }, (err) => {
         alert('Unable to take photo');
       })
