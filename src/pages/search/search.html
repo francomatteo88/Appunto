@@ -1,0 +1,20 @@
+<ion-header> 
+  <ion-navbar color="custom-blue">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title><ion-searchbar (ionInput)="getItems($event)" placeholder="Cerca"></ion-searchbar></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <button ion-item (click)="openItem(item)" *ngFor="let item of currentItems">
+      <ion-avatar item-start>
+        <img src="https://puntostorage.blob.core.windows.net/punto-public/{{item.ImageBlobFileId}}.jpeg" />
+      </ion-avatar>
+      <h2>{{item.Title}}</h2>
+      <p>{{item.Description}}</p>     
+    </button>
+  </ion-list>
+</ion-content>

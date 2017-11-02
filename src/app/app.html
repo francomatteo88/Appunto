@@ -1,0 +1,20 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <div style="background-color: #198aec;display: flex;justify-content: center;align-items: center;/* padding-top: 2rem; */color: #fff;height: 150px;/* padding: 2rem; */font-size: 4rem;font-style: italic;">
+      Punto!
+    </div>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+    </ion-list> 
+    <button ion-button block menuClose (click)="newAdv()" >
+      Nuovo Annuncio
+    </button>  
+  </ion-content>
+</ion-menu>
+ 
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

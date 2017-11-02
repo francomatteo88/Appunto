@@ -1,0 +1,8 @@
+{
+  "name": "Appunto",
+  "app_id": "42d4be96",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
