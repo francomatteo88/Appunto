@@ -41,8 +41,8 @@ export class ItemCreatePage {
     if (Camera['installed']()) {
       this.camera.getPicture({
         destinationType: this.camera.DestinationType.DATA_URL,
-        targetWidth: 96,
-        targetHeight: 96 
+        targetWidth: 640,
+        targetHeight: 640 
       }).then((data) => {
         this.form.patchValue({ 'profilePic': 'data:image/jpeg;base64,' + data });
       }, (err) => {
