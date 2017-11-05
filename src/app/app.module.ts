@@ -9,11 +9,13 @@ import { Api } from '../providers/providers';
 import { Camera } from '@ionic-native/camera';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-  
+import { ItemCreatePage } from '../pages/item-create/item-create';
+
 @NgModule({
   declarations: [ 
     MyApp,
-    SearchPage
+    SearchPage,
+    ItemCreatePage
   ],
   imports: [
     BrowserModule,
@@ -23,7 +25,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    SearchPage
+    SearchPage,
+    ItemCreatePage
   ],
   providers: [
     Api,

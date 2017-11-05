@@ -1,8 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { ModalController, Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SearchPage } from '../pages/search/search';
+import { ItemCreatePage } from '../pages/item-create/item-create';
 
 @Component({
   templateUrl: 'app.html'
@@ -14,7 +15,7 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public modalCtrl: ModalController) {
     this.initializeApp(); 
  
     // used for an example of ngFor and navigation
@@ -31,7 +32,7 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
-  }
+  } 
 
   openPage(page) {
     // Reset the content nav to have just this page
@@ -40,7 +41,9 @@ export class MyApp {
   }
 
   newAdv() {
-    this.nav.push('ItemCreatePage');
+    let itemcreateModal = this.modalCtrl.create(ItemCreatePage, { userId: 8675309 });
+    itemcreateModal.present();
+    //this.nav.push('ItemCreatePage');
   }
 
 }

@@ -5,7 +5,7 @@ import { IonicPage, NavController, ViewController, NavParams } from 'ionic-angul
 import { HttpClient, HttpClientModule, HttpHeaders  } from '@angular/common/http';
 import { Headers, RequestOptions } from '@angular/http';
 
-@IonicPage() 
+//@IonicPage() 
 @Component({
   selector: 'page-item-create',
   templateUrl: 'item-create.html'
@@ -62,7 +62,7 @@ export class ItemCreatePage {
     };
  
     reader.readAsDataURL(event.target.files[0]);
-  }
+  } 
 
   getProfileImageStyle() {
     return 'url(' + this.form.controls['profilePic'].value + ')'
@@ -80,6 +80,7 @@ export class ItemCreatePage {
    * back to the presenter.
    */
   done() {
+
     if (!this.form.valid) { return; }
 		
   	var urlcategory = "http://punto20171017111129.azurewebsites.net/api/Advertisements";
@@ -95,9 +96,7 @@ export class ItemCreatePage {
     });
 
     this.http.post(urlcategory, body, { headers: headers} ).subscribe();
-
-	
-	
+    this.viewCtrl.dismiss();
     //this.viewCtrl.dismiss(this.form.value);
   }
 }
