@@ -9,7 +9,7 @@ import { Camera } from '@ionic-native/camera';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ItemCreatePage } from '../pages/item-create/item-create';
-import { SearchModalPage } from '../pages/search-modal/search-modal';
+import { SearchModalPage } from '../pages/search-modal/search-modal'; 
 
 @NgModule({
   declarations: [ 
