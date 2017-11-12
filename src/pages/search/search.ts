@@ -57,7 +57,7 @@ export class SearchPage {
         this.firstColumnItems = [];
         this.secondColumnItems = [];
         for (var i = 0; i < this.currentItems.length - 1; i++) { 
-          if ( i % 2 == 0){
+          if ( i % 2 == 0){  
             this.firstColumnItems.push(this.currentItems[i]);
           }else{
             this.secondColumnItems.push(this.currentItems[i]);

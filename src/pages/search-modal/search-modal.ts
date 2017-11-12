@@ -13,8 +13,8 @@ export class SearchModalPage {
   
   cancel() {
     this.viewCtrl.dismiss();
-  }
- 
+  } 
+  
   search(q: string){
     this.viewCtrl.dismiss(q);
   }
