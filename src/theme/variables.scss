@@ -40,12 +40,12 @@ $colors: (
   light:      #f4f4f4,
   dark:       #222,
   custom-blue:   #198aec,
-  custom-green:  #008c00
+  custom-green:  #32db64
 );
 
 
 // App iOS Variables
-// --------------------------------------------------
+// ------------------------------- -------------------
 // iOS only Sass variables can go here
 
 
@@ -55,7 +55,7 @@ $colors: (
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
-
+  $searchbar-md-background-color :#2ec95c;
 
 
 // App Windows Variables

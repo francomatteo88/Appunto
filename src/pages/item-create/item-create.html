@@ -1,10 +1,13 @@
 <ion-header> 
-  <ion-navbar color="custom-blue">  
-    <button ion-button (click)="cancel()"> 
-      <ion-icon name="arrow-back"></ion-icon>
-    </button> 
-    <ion-title>Nuovo Annuncio</ion-title>
-  </ion-navbar>
+   <ion-toolbar color="custom-blue">  
+      <ion-buttons left>
+        <button ion-button icon-only (click)="cancel()"> 
+          <ion-icon name="arrow-back"></ion-icon>
+        </button> 
+      </ion-buttons> 
+    <ion-title>Nuovo Annuncio</ion-title> 
+  </ion-toolbar> 
+
 </ion-header>
 <ion-content>
   <form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">

@@ -1,20 +1,48 @@
 <ion-header> 
-  <ion-navbar color="custom-blue">
+  <ion-navbar color="custom-green">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title><ion-searchbar (ionInput)="getItems($event)" placeholder="Cerca"></ion-searchbar></ion-title>
+    <!-- <ion-title>    </ion-title>  -->
+        <!-- <ion-searchbar (ionInput)="getItems($event)" placeholder="Cerca in punto"></ion-searchbar> -->
+        <div class="search-bar" (click)="searchmodal()" > 
+                <ion-icon name="search"></ion-icon>    
+        </div>   
+   
+    <ion-buttons right>
+        <button ion-button icon-only (click)="advancedsearch()" class="advanced-search" > 
+            <ion-icon name="options"></ion-icon>
+        </button> 
+    </ion-buttons> 
   </ion-navbar>
 </ion-header>
-
 <ion-content>
-  <ion-list>
-    <button ion-item (click)="openItem(item)" *ngFor="let item of currentItems">
-      <ion-avatar item-start>
-        <img src="https://puntostorage.blob.core.windows.net/punto-public/{{item.ImageBlobFileId}}.jpeg" />
-      </ion-avatar>
-      <h2>{{item.Title}}</h2>
-      <p>{{item.Description}}</p>     
-    </button>
-  </ion-list>
+    <ion-grid>
+        <ion-row>
+            <ion-col col-6>
+                <ion-list>
+                    <ion-card (click)="openItem(item)" *ngFor="let item of firstColumnItems">
+                    <img src="https://puntostorage.blob.core.windows.net/punto-public/{{item.ImageBlobFileId}}.jpeg"/>
+                        <ion-card-content>
+                        <p>
+                        {{item.Title}}
+                        </p>
+                        </ion-card-content>
+                    </ion-card>
+                </ion-list>
+            </ion-col>
+          <ion-col col-6>
+      <ion-list>
+          <ion-card (click)="openItem(item)" *ngFor="let item of secondColumnItems">
+              <img src="https://puntostorage.blob.core.windows.net/punto-public/{{item.ImageBlobFileId}}.jpeg" />
+              <ion-card-content>
+                  <p>
+                    {{item.Title}}
+                  </p>
+              </ion-card-content>
+            </ion-card>
+      </ion-list>
+              </ion-col>
+        </ion-row>
+    </ion-grid>   
 </ion-content>

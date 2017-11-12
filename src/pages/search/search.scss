@@ -1,3 +1,44 @@
 page-search {
+  .card.card-md{
+    margin:0px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .card-content.card-content-md{
+      padding-top:5px;
+  }
+
+  .card-md p{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .advanced-search{
+    width:44px;
+    margin-left: 10px;
+  }
+
+  .advanced-search .icon{
+    font-size: 22px;
+    margin: 0 6px;
+  }
+
+  .search-bar{
+    width:100%;
+    border-radius:5px;
+    margin:5px;
+    background-color:rgb(115, 248, 110);
+    height: 35px;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-bar .icon{
+    color: white;
+    font-size: 1.5em;
+    margin-left: 12px;
+  } 
 
 }

@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ModalController,IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HttpClient } from '@angular/common/http';
+import { SearchModalPage } from '../search-modal/search-modal';
 
 import "rxjs/Rx";
-
-//import { Item } from '../../models/item';
-//import { Items } from '../../providers/providers';
 
 @IonicPage()
 @Component({
@@ -15,8 +13,10 @@ import "rxjs/Rx";
 export class SearchPage {
 
   currentItems: any = [];
+  firstColumnItems: any = [];
+  secondColumnItems: any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient ) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient, public modalCtrl: ModalController ) { }
 
   /**
    * Perform a service for the proper items.
@@ -25,10 +25,19 @@ export class SearchPage {
      let val = ev.target.value;
      this.http.get("http://punto20171017111129.azurewebsites.net/api/Advertisements?search_query="+val)
 		.subscribe(result => {
-			this.currentItems = result;
-        });
+      this.currentItems = result;
+      this.firstColumnItems = [];
+      this.secondColumnItems = [];
+      for (var i = 0; i < this.currentItems.length - 1; i++) { 
+        if ( i % 2 == 0){
+          this.firstColumnItems.push(this.currentItems[i]);
+        }else{
+          this.secondColumnItems.push(this.currentItems[i]);
+        };
+      };
+
+     });
    }
-   
    
   /**
    * Navigate to the detail page for this item.
@@ -37,6 +46,11 @@ export class SearchPage {
     this.navCtrl.push('ItemDetailPage', {
       item: item
     });
+  }
+
+  searchmodal(item: any) {
+    let itemcreateModal = this.modalCtrl.create(SearchModalPage, { userId: 8675309 });
+    itemcreateModal.present();
   }
 
 }

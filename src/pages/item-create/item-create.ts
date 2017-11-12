@@ -1,9 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera } from '@ionic-native/camera';
-import { IonicPage, NavController, ViewController, NavParams } from 'ionic-angular';
-import { HttpClient, HttpClientModule, HttpHeaders  } from '@angular/common/http';
-import { Headers, RequestOptions } from '@angular/http';
+import { NavController, ViewController } from 'ionic-angular';
+import { HttpClient, HttpHeaders  } from '@angular/common/http';
 
 //@IonicPage() 
 @Component({
