@@ -10,7 +10,7 @@ import { HttpClient, HttpHeaders  } from '@angular/common/http';
   templateUrl: 'item-create.html'
 })
 export class ItemCreatePage {
-
+ 
   @ViewChild('fileInput') fileInput;
 
   isReadyToSave: boolean;

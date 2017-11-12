@@ -9,14 +9,14 @@ export class SearchModalPage {
    
   constructor(public navCtrl: NavController, navParams: NavParams, public viewCtrl: ViewController) {
      
-  } 
-
+  }  
+  
   cancel() {
     this.viewCtrl.dismiss();
   }
-
-  search(value:string){
-    alert(value);
-    this.viewCtrl.dismiss(value);
+ 
+  search(q: string){
+    this.viewCtrl.dismiss(q);
   }
+  
 }

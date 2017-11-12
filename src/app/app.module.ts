@@ -19,7 +19,7 @@ import { SearchModalPage } from '../pages/search-modal/search-modal';
     SearchModalPage
   ],
   imports: [
-    BrowserModule,
+    BrowserModule, 
     HttpClientModule,
     IonicModule.forRoot(MyApp),
   ],
