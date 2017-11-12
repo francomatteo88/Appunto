@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams,ViewController } from 'ionic-angular';
 
 @Component({
   selector: 'page-search-modal',
@@ -7,8 +7,16 @@ import { NavController, NavParams } from 'ionic-angular';
 }) 
 export class SearchModalPage {
    
-  constructor(public navCtrl: NavController, navParams: NavParams) {
+  constructor(public navCtrl: NavController, navParams: NavParams, public viewCtrl: ViewController) {
      
   } 
 
+  cancel() {
+    this.viewCtrl.dismiss();
+  }
+
+  search(value:string){
+    alert(value);
+    this.viewCtrl.dismiss(value);
+  }
 }

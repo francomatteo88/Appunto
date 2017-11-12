@@ -49,6 +49,25 @@ export class SearchPage {
 
   searchmodal() {
     let itemcreateModal = this.modalCtrl.create(SearchModalPage);
+
+    itemcreateModal.onDidDismiss(data => {
+      let val = data;
+      this.http.get("http://punto20171017111129.azurewebsites.net/api/Advertisements?search_query="+val)
+     .subscribe(result => {
+       this.currentItems = result;
+       this.firstColumnItems = [];
+       this.secondColumnItems = [];
+       for (var i = 0; i < this.currentItems.length - 1; i++) { 
+         if ( i % 2 == 0){
+           this.firstColumnItems.push(this.currentItems[i]);
+         }else{
+           this.secondColumnItems.push(this.currentItems[i]);
+         };
+       };
+ 
+      });
+    });
+
     itemcreateModal.present();
   }
 

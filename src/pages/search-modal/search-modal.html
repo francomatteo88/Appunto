@@ -1,13 +1,13 @@
 <ion-header> 
     <ion-toolbar>  
        <ion-buttons left>
-         <button ion-button icon-only (click)="cancel()"> 
+         <button ion-button icon-only (click)="cancel()" style="margin-left: 12px;"> 
            <ion-icon name="arrow-back"></ion-icon>
          </button> 
        </ion-buttons> 
-       
+
      <ion-title>
-        <ion-searchbar (ionInput)="getItems($event)" placeholder="Cerca in punto"></ion-searchbar>
+        <ion-searchbar placeholder="Cerca in punto" (keyup.enter)="search(q.value)"></ion-searchbar> 
    </ion-title> 
 
    </ion-toolbar> 
