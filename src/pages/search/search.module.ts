@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { SearchPage } from './search';
+import { SearchPage } from './search'; 
 import { SearchModalPage } from '../search-modal/search-modal';
 
 @NgModule({
@@ -13,7 +13,7 @@ import { SearchModalPage } from '../search-modal/search-modal';
   ],
   exports: [
     SearchPage
-  ],
+  ], 
   entryComponents: [
     SearchModalPage
   ],

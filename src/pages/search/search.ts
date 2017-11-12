@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ModalController,IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { SearchModalPage } from '../search-modal/search-modal';
-
 import "rxjs/Rx";
 
 @IonicPage()
@@ -48,8 +47,8 @@ export class SearchPage {
     });
   }
 
-  searchmodal(item: any) {
-    let itemcreateModal = this.modalCtrl.create(SearchModalPage, { userId: 8675309 });
+  searchmodal() {
+    let itemcreateModal = this.modalCtrl.create(SearchModalPage);
     itemcreateModal.present();
   }
 
