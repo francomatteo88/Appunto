@@ -10,7 +10,7 @@ import "rxjs/Rx";
   templateUrl: 'search.html'
 })
 export class SearchPage {
-
+  searchkey :any;
   currentItems: any = [];
   firstColumnItems: any = [];
   secondColumnItems: any = [];
@@ -51,6 +51,7 @@ export class SearchPage {
     let itemcreateModal = this.modalCtrl.create(SearchModalPage);
 
     itemcreateModal.onDidDismiss(data => {
+      this.searchkey = data;
       this.http.get("http://punto20171017111129.azurewebsites.net/api/Advertisements?search_query="+data)
       .subscribe(result => {
         this.currentItems = result;
