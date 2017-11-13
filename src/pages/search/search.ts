@@ -45,7 +45,7 @@ export class SearchPage {
     this.navCtrl.push('ItemDetailPage', {
       item: item
     });
-  }
+  }  
 
   searchmodal() {
     let itemcreateModal = this.modalCtrl.create(SearchModalPage);
