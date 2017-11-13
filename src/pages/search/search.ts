@@ -63,7 +63,6 @@ export class SearchPage {
             this.secondColumnItems.push(this.currentItems[i]);
           };
         };
-  
        });
     });
 
