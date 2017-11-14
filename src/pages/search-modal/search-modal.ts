@@ -6,9 +6,11 @@ import { NavController, NavParams,ViewController } from 'ionic-angular';
   templateUrl: 'search-modal.html'
 }) 
 export class SearchModalPage {
-   
+
+  searchkey :any;
+
   constructor(public navCtrl: NavController, navParams: NavParams, public viewCtrl: ViewController) {
-     
+     this.searchkey = navParams.get('searchkey');
   }  
   
   cancel() {

@@ -7,6 +7,7 @@ import { ItemCreatePage } from '../pages/item-create/item-create';
  
 
 @Component({
+  selector: 'MyApp',
   templateUrl: 'app.html'
 })
 export class MyApp {
