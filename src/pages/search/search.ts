@@ -15,21 +15,24 @@ export class SearchPage {
   firstColumnItems: any = [];
   secondColumnItems: any = [];
 
+  loading: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient, public modalCtrl: ModalController,public  loadingCtrl: LoadingController ) { 
-    this.presentLoadingDefault(); 
   }
 
   presentLoadingDefault() {
-    let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
+    this.loading = this.loadingCtrl.create({
+      content: 'Ricerca in corso...'
     });
   
-    loading.present();
+    this.loading.present();
+
+  };
   
-    setTimeout(() => {
-      loading.dismiss();
-    }, 5000);
-  }  
+  dismissLoading(){
+
+    this.loading.dismiss();
+  }
 
   /**
    * Navigate to the detail page for this item.
@@ -43,7 +46,7 @@ export class SearchPage {
   searchmodal() {
 
     let itemcreateModal = this.modalCtrl.create(SearchModalPage, { searchkey: this.searchkey });
-
+    this.presentLoadingDefault(); 
     itemcreateModal.onDidDismiss(data => {
       this.searchkey = data;
       this.http.get("http://punto20171017111129.azurewebsites.net/api/Advertisements?search_query="+data)
@@ -58,6 +61,7 @@ export class SearchPage {
             this.secondColumnItems.push(this.currentItems[i]);
           };
         };
+        this.dismissLoading();
        });
     });
 
