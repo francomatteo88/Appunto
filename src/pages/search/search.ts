@@ -68,4 +68,21 @@ export class SearchPage {
     itemcreateModal.present();
   }
 
+  doInfinite(infiniteScroll) {
+
+    this.http.get("http://punto20171017111129.azurewebsites.net/api/Advertisements?search_query="+this.searchkey)
+    .subscribe(result => {
+      this.currentItems = result;
+      for (var i = 0; i < this.currentItems.length - 1; i++) { 
+        if ( i % 2 == 0){  
+          this.firstColumnItems.push(this.currentItems[i]);
+        }else{
+          this.secondColumnItems.push(this.currentItems[i]);
+        };
+      };
+      infiniteScroll.complete();
+     });
+
+  }
+
 }
