@@ -1,10 +1,10 @@
 <ion-header> 
-   <ion-toolbar color="custom-blue">  
+   <ion-toolbar color="custom-green">  
       <ion-buttons left>
-        <button ion-button icon-only (click)="cancel()"> 
-          <ion-icon name="arrow-back"></ion-icon>
-        </button> 
-      </ion-buttons> 
+          <button ion-button icon-only (click)="cancel()" style="margin-left: 12px;"> 
+            <ion-icon name="arrow-back"></ion-icon>
+          </button> 
+        </ion-buttons> 
     <ion-title>Nuovo Annuncio</ion-title> 
   </ion-toolbar> 
 
@@ -30,7 +30,7 @@
       </ion-item>
     </ion-list>
   </form>
-   <button ion-button (click)="done()" strong>
+   <button ion-button (click)="done()" strong class="button-block" color="custom-green">
         <span color="primary">
           Crea
         </span>
