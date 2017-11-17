@@ -11,10 +11,7 @@ export class SearchModalPage {
 
   constructor(public navCtrl: NavController, navParams: NavParams, public viewCtrl: ViewController) {
      this.searchkey = navParams.get('searchkey');
-     let elem = <HTMLInputElement>document.querySelector('#q');
-     if (elem) {
-         elem.focus();
-     }
+
   }  
   
   cancel() {
