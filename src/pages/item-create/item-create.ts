@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera } from '@ionic-native/camera';
 import { NavController, ViewController } from 'ionic-angular';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
+import { Http, Response, RequestOptions, Headers } from '@angular/http';
 
 //@IonicPage() 
 @Component({
@@ -17,7 +18,7 @@ export class ItemCreatePage {
   item: any;
   form: FormGroup;
  
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera, private http: HttpClient) {
+  constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera, private http: Http) {
     this.form = formBuilder.group({
       profilePic: [''],
       name: ['', Validators.required],
@@ -68,9 +69,15 @@ export class ItemCreatePage {
   done() {
     if (!this.form.valid) { return; }	
 
-  	var urlcategory = "http://punto20171017111129.azurewebsites.net/api/Advertisements";
-    
-    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  	var urlcategory = "http://punto20171017111129.azurewebsites.net/api/Advertisement";
+   
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    let username: string = 'matteo';
+    let password: string = 'Sup3rg3n10';
+
+    headers.append("Authorization", "Basic " + btoa(username + ":" + password));  
+    let options = new RequestOptions({ headers: headers });
 
     var body = JSON.stringify({
         ImageData: this.form.controls.profilePic.value,
@@ -79,7 +86,7 @@ export class ItemCreatePage {
 		    CityId: 1
     });
 
-    this.http.post(urlcategory, body, { headers: headers} ).subscribe();
+    this.http.post(urlcategory, body, options ).subscribe();
     this.viewCtrl.dismiss();
     //this.viewCtrl.dismiss(this.form.value);
   }

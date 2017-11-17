@@ -1,7 +1,10 @@
+<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+
+
 <ion-menu [content]="content">
   <ion-header>
-    <div class="header-div">
-      Punto!
+    <div class="header-div" style="font-family: 'Pacifico', cursive; font-size: 50px;">
+      Appunto
     </div>
   </ion-header>
   <ion-content>
@@ -10,11 +13,17 @@
         {{p.title}}
       </button>
     </ion-list> 
-    <button ion-button block menuClose (click)="newAdv()" >
+    <!-- <button ion-button block menuClose (click)="newAdv()"  >
        Nuovo Annuncio
-    </button>  
+    </button>   -->
   </ion-content>
 </ion-menu>
- 
+
+  
+<ion-fab center bottom style="z-index:79">
+    <button ion-fab color="custom-green"  menuClose (click)="newAdv()"><ion-icon name="add"></ion-icon></button>
+</ion-fab>
+
+
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

@@ -10,6 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ItemCreatePage } from '../pages/item-create/item-create';
 import { SearchModalPage } from '../pages/search-modal/search-modal'; 
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [ 
@@ -21,6 +22,7 @@ import { SearchModalPage } from '../pages/search-modal/search-modal';
   imports: [
     BrowserModule, 
     HttpClientModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],

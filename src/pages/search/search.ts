@@ -11,6 +11,7 @@ import "rxjs/Rx";
 })
 export class SearchPage {
   
+  skip: any = 0;
   searchkey :any;
   currentItems: any = [];
   firstColumnItems: any = [];
@@ -37,17 +38,18 @@ export class SearchPage {
     });
   }  
 
-  searchmodal() {
+  searchmodal() {   
     let itemcreateModal = this.modalCtrl.create(SearchModalPage, { searchkey: this.searchkey });
     this.presentLoadingDefault(); 
     itemcreateModal.onDidDismiss(data => {
+      this.skip = 0;
       this.searchkey = data;
-      this.http.get("http://punto20171017111129.azurewebsites.net/api/Search?skip=0&search_query="+data)
-      .subscribe(result => {
+      this.http.get("http://punto20171017111129.azurewebsites.net/api/Search?skip="+this.skip+"&search_query="+data)
+      .subscribe(result => {      
         this.currentItems = result;
         this.firstColumnItems = [];
         this.secondColumnItems = [];
-        for (var i = 0; i < this.currentItems.length - 1; i++) { 
+        for (var i = 0; i < this.currentItems.length; i++) { 
           if ( i % 2 == 0){  
             this.firstColumnItems.push(this.currentItems[i]);
           }else{
@@ -61,10 +63,11 @@ export class SearchPage {
   }
 
   doInfinite(infiniteScroll) {
-    this.http.get("http://punto20171017111129.azurewebsites.net/api/Search?skip=0&search_query="+this.searchkey)
+    this.skip++;
+    this.http.get("http://punto20171017111129.azurewebsites.net/api/Search?skip="+this.skip+"&search_query="+this.searchkey)
     .subscribe(result => {
       this.currentItems = result;
-      for (var i = 0; i < this.currentItems.length - 1; i++) { 
+      for (var i = 0; i < this.currentItems.length; i++) { 
         if ( i % 2 == 0){  
           this.firstColumnItems.push(this.currentItems[i]);
         }else{
