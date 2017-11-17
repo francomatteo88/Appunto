@@ -10,11 +10,11 @@ import "rxjs/Rx";
   templateUrl: 'search.html'
 })
 export class SearchPage {
+  
   searchkey :any;
   currentItems: any = [];
   firstColumnItems: any = [];
   secondColumnItems: any = [];
-
   loading: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient, public modalCtrl: ModalController,public  loadingCtrl: LoadingController ) { 
@@ -24,19 +24,13 @@ export class SearchPage {
     this.loading = this.loadingCtrl.create({
       content: 'Ricerca in corso...'
     });
-  
     this.loading.present();
-
   };
   
   dismissLoading(){
-
     this.loading.dismiss();
   }
 
-  /**
-   * Navigate to the detail page for this item.
-   */
   openItem(item: any) {
     this.navCtrl.push('ItemDetailPage', {
       item: item
@@ -44,12 +38,11 @@ export class SearchPage {
   }  
 
   searchmodal() {
-
     let itemcreateModal = this.modalCtrl.create(SearchModalPage, { searchkey: this.searchkey });
     this.presentLoadingDefault(); 
     itemcreateModal.onDidDismiss(data => {
       this.searchkey = data;
-      this.http.get("http://punto20171017111129.azurewebsites.net/api/Advertisements?search_query="+data)
+      this.http.get("http://punto20171017111129.azurewebsites.net/api/Search?skip=0&search_query="+data)
       .subscribe(result => {
         this.currentItems = result;
         this.firstColumnItems = [];
@@ -64,13 +57,11 @@ export class SearchPage {
         this.dismissLoading();
        });
     });
-
     itemcreateModal.present();
   }
 
   doInfinite(infiniteScroll) {
-
-    this.http.get("http://punto20171017111129.azurewebsites.net/api/Advertisements?search_query="+this.searchkey)
+    this.http.get("http://punto20171017111129.azurewebsites.net/api/Search?skip=0&search_query="+this.searchkey)
     .subscribe(result => {
       this.currentItems = result;
       for (var i = 0; i < this.currentItems.length - 1; i++) { 
@@ -82,7 +73,6 @@ export class SearchPage {
       };
       infiniteScroll.complete();
      });
-
   }
 
 }

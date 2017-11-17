@@ -14,9 +14,7 @@ export class ItemCreatePage {
   @ViewChild('fileInput') fileInput;
 
   isReadyToSave: boolean;
-
   item: any;
-
   form: FormGroup;
  
   constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera, private http: HttpClient) {
@@ -25,8 +23,6 @@ export class ItemCreatePage {
       name: ['', Validators.required],
       about: ['']
     });
-
-    // Watch the form for changes, and
     this.form.valueChanges.subscribe((v) => {
       this.isReadyToSave = this.form.valid;
     });
@@ -55,11 +51,9 @@ export class ItemCreatePage {
   processWebImage(event) {
     let reader = new FileReader();
     reader.onload = (readerEvent) => {
-
       let imageData = (readerEvent.target as any).result;
       this.form.patchValue({ 'profilePic': imageData });
     };
- 
     reader.readAsDataURL(event.target.files[0]);
   } 
 
@@ -67,25 +61,16 @@ export class ItemCreatePage {
     return 'url(' + this.form.controls['profilePic'].value + ')'
   }
 
-  /**
-   * The user cancelled, so we dismiss without sending data back.
-   */
   cancel() {
     this.viewCtrl.dismiss();
   }
 
-  /**
-   * The user is done and wants to create the item, so return it
-   * back to the presenter.
-   */
   done() {
+    if (!this.form.valid) { return; }	
 
-    if (!this.form.valid) { return; }
-		
   	var urlcategory = "http://punto20171017111129.azurewebsites.net/api/Advertisements";
-
+    
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    //let options = new RequestOptions({ headers: headers });
 
     var body = JSON.stringify({
         ImageData: this.form.controls.profilePic.value,

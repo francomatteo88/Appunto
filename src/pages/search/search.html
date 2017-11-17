@@ -17,7 +17,7 @@
     <ion-grid>
         <ion-row>
             <ion-col col-6>
-                <!-- <ion-list  [virtualScroll]="firstColumnItems"> -->
+                <!-- <ion-list  [virtualScroll]="firstColumnItems">  -->
                 <!-- <ion-item *ngFor="let item of firstColumnItems"> -->
 
                   <ion-card (click)="openItem(item)" *ngFor="let item of firstColumnItems" >
@@ -30,9 +30,10 @@
                     </ion-card>
 
                 <!-- </ion-item> -->
-                <!-- </ion-list> -->
+                <!-- </ion-list>  -->
             </ion-col>
           <ion-col col-6>
+
       <!-- <ion-list [virtualScroll]="secondColumnItems"> -->
           <!-- <ion-item *ngFor="let item of secondColumnItems" > -->
 
@@ -46,7 +47,8 @@
             </ion-card>
 
         <!-- </ion-item>       -->
-      <!-- </ion-list> -->
+     <!-- </ion-list> -->
+
               </ion-col>
         </ion-row>
     </ion-grid>   
@@ -54,6 +56,5 @@
     <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
             <ion-infinite-scroll-content></ion-infinite-scroll-content>
     </ion-infinite-scroll>
-
 
 </ion-content>
