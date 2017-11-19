@@ -3,6 +3,7 @@ import { ModalController,IonicPage, NavController, NavParams,LoadingController }
 import { HttpClient } from '@angular/common/http';
 import { SearchModalPage } from '../search-modal/search-modal';
 import "rxjs/Rx";
+import { ItemCreatePage } from '../item-create/item-create';
 
 @IonicPage()
 @Component({
@@ -32,11 +33,6 @@ export class SearchPage {
     this.loading.dismiss();
   }
 
-  openItem(item: any) {
-    this.navCtrl.push('ItemDetailPage', {
-      item: item
-    });
-  }  
 
   searchmodal() {   
     let itemcreateModal = this.modalCtrl.create(SearchModalPage, { searchkey: this.searchkey });
@@ -77,5 +73,24 @@ export class SearchPage {
       infiniteScroll.complete();
      });
   }
+
+  openPage(page) {
+    // Reset the content nav to have just this page
+    // we wouldn't want the back button to show in this scenario
+    this.navCtrl.setRoot(page.component);
+  }
+
+  openItem(item: any) {
+    this.navCtrl.push('ItemDetailPage', {
+      item: item
+    });
+  }  
+ 
+  newAdv() {
+    // let itemcreateModal = this.modalCtrl.create(ItemCreatePage, { userId: 8675309 });
+    // itemcreateModal.present();
+    this.navCtrl.push(ItemCreatePage);
+  }
+
 
 }

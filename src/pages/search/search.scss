@@ -56,5 +56,30 @@ page-search {
     margin-left: 12px;
     margin-right: 12px;
   } 
+  
+
+  .bottom-tab{
+    position:absolute; 
+    bottom:0px; 
+    left:0px; 
+    width:100%; 
+    display:flex;
+    background-color: #fff;
+    box-shadow: #c1c1c1 -2px -1px 5px 0px;
+
+  }
+
+
+  .bottom-tab{
+    
+    .icon-button{ 
+      flex-grow: 1;
+      text-align: center; 
+      .material-icons{
+        font-size: 40px;
+        color: #bdbdbd;
+      }
+    }
+  }
 
 }

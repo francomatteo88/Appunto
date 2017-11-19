@@ -1,3 +1,5 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <ion-header> 
   <ion-navbar color="custom-green">
     <button ion-button menuToggle>
@@ -51,7 +53,7 @@
               <ion-card-content>
                   <p>
                     {{item.Title}}
-                  </p>
+                  </p> 
               </ion-card-content>
             </ion-card>
 
@@ -66,4 +68,12 @@
             <ion-infinite-scroll-content></ion-infinite-scroll-content>
     </ion-infinite-scroll>
 
+    <div class="bottom-tab">
+        <div class="icon-button"> <i class="material-icons" style="color:#32db8e">explore</i></div>
+        <div class="icon-button" (click)="newAdv()"><i class="material-icons">photo_camera</i></div>
+        <div class="icon-button" (click)="myprofile()"><i class="material-icons">account_circle</i></div>
+    </div>
+  
 </ion-content>
+
+

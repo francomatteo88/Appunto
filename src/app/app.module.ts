@@ -4,14 +4,13 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpClientModule  } from '@angular/common/http';
 import { MyApp } from './app.component';
 import { SearchPage } from '../pages/search/search';
-import { Api } from '../providers/providers';
 import { Camera } from '@ionic-native/camera';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ItemCreatePage } from '../pages/item-create/item-create';
 import { SearchModalPage } from '../pages/search-modal/search-modal'; 
 import { HttpModule } from '@angular/http';
-
+ 
 @NgModule({
   declarations: [ 
     MyApp,
@@ -33,7 +32,6 @@ import { HttpModule } from '@angular/http';
     SearchModalPage
   ],
   providers: [
-    Api,
     Camera,		
     StatusBar,
     SplashScreen,

@@ -1,16 +1,16 @@
 import { Component,ViewChild } from '@angular/core';
-import { NavController, NavParams,ViewController } from 'ionic-angular';
-
+import { NavController, NavParams,ViewController,Searchbar } from 'ionic-angular';
+      
 @Component({
-  selector: 'page-search-modal',
+  selector: 'page-search-modal', 
   templateUrl: 'search-modal.html'
 }) 
 export class SearchModalPage {
-
+ 
   searchkey :any;
 
   @ViewChild('mainSearchbar') searchBar: Searchbar
-  
+   
   constructor(public navCtrl: NavController, navParams: NavParams, public viewCtrl: ViewController) {
      this.searchkey = navParams.get('searchkey');
 
