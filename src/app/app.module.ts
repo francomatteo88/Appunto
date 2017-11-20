@@ -9,6 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ItemCreatePage } from '../pages/item-create/item-create';
 import { SearchModalPage } from '../pages/search-modal/search-modal'; 
+import { LoginPage } from '../pages/login/login';
 import { HttpModule } from '@angular/http';
  
 @NgModule({
@@ -16,7 +17,8 @@ import { HttpModule } from '@angular/http';
     MyApp,
     SearchPage,
     ItemCreatePage,
-    SearchModalPage
+    SearchModalPage,
+    LoginPage
   ],
   imports: [
     BrowserModule, 
@@ -29,7 +31,8 @@ import { HttpModule } from '@angular/http';
     MyApp,
     SearchPage,
     ItemCreatePage,
-    SearchModalPage
+    SearchModalPage,
+    LoginPage
   ],
   providers: [
     Camera,		

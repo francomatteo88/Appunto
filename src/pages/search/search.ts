@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { SearchModalPage } from '../search-modal/search-modal';
 import "rxjs/Rx";
 import { ItemCreatePage } from '../item-create/item-create';
+import { LoginPage } from '../login/login';
 
 @IonicPage()
 @Component({
@@ -92,5 +93,8 @@ export class SearchPage {
     this.navCtrl.push(ItemCreatePage);
   }
 
+  myprofile(){
+    this.navCtrl.push(LoginPage);
+  }
 
 }
