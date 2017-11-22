@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar color="custom-green">
+    <ion-title>Registrazione</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <form (submit)="doRegister()">
+    <ion-list>
+      <ion-item>
+        <ion-label>Email</ion-label>
+        <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Nome</ion-label>
+        <ion-input type="text" [(ngModel)]="account.firstname" name="firstname"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Cognome</ion-label>
+        <ion-input type="text" [(ngModel)]="account.lastname" name="lastname"></ion-input>
+      </ion-item>
+      <div padding>
+        <button ion-button color="primary" block>Registrati</button>
+      </div>
+    </ion-list>
+  </form>
+</ion-content>

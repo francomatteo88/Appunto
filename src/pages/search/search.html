@@ -71,7 +71,8 @@
     <div class="bottom-tab">
         <div class="icon-button"> <i class="material-icons" style="color:#32db8e">explore</i></div>
         <div class="icon-button" (click)="newAdv()"><i class="material-icons">photo_camera</i></div>
-        <div class="icon-button" (click)="myprofile()"><i class="material-icons">account_circle</i></div>
+        <div class="icon-button" *ngIf="!this.loggedIn" (click)="login()"><i class="material-icons">account_circle</i></div>
+        <div class="icon-button" *ngIf="this.loggedIn" (click)="myprofile()"><i class="material-icons">account_circle</i></div>      
     </div>
   
 </ion-content>

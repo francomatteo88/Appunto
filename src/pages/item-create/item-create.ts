@@ -1,9 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import { Camera } from '@ionic-native/camera';
 import { IonicPage, NavController, ViewController } from 'ionic-angular';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
+import { Storage } from '@ionic/storage';
+
 
 @IonicPage() 
 @Component({
@@ -18,9 +20,11 @@ export class ItemCreatePage {
   item: any;
   form: FormGroup;
  
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera, private http: Http) {
+  constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera, private http: Http,public storage: Storage) {
     this.form = formBuilder.group({
-      profilePic: [''],
+      images: formBuilder.array([
+        new FormControl()
+      ]),
       name: ['', Validators.required],
       about: ['']
     });
@@ -80,7 +84,7 @@ export class ItemCreatePage {
     let options = new RequestOptions({ headers: headers });
 
     var body = JSON.stringify({
-        ImageData: this.form.controls.profilePic.value,
+        Images: this.form.controls.profilePic.value,
         Title: this.form.controls['name'].value,
         Description: this.form.controls['about'].value,
 		    CityId: 1
