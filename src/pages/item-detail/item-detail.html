@@ -6,30 +6,19 @@
 
 </ion-header>
 
-
 <ion-content>
 
-    <!-- <ion-slides pager>
-        
-          <ion-slide style="background-color: green">
-            <h2>Slide 1</h2>
-          </ion-slide>
-        
-          <ion-slide style="background-color: blue">
-            <h2>Slide 2</h2>
-          </ion-slide>
-        
-          <ion-slide style="background-color: red">
-            <h2>Slide 3</h2>
-          </ion-slide>
-        
-        </ion-slides> -->
-
-
-  <div class="item-profile" style="height: 200px;background-size: cover;" text-center #ImageBlobFileId [style.background-image]="'url(https://puntostorage.blob.core.windows.net/punto-public/'+ item.ImageBlobFileId+'.jpeg)'"></div>
+  <div style="height:350px">
+    <ion-slides>    
+        <ion-slide *ngFor="let blobfile of item.BlobFiles" >
+            <div class="item-profile" style="height: 350px;background-size: cover;" text-center #ImageBlobFileId [style.background-image]="'url(https://puntostorage.blob.core.windows.net/punto-public/'+ blobfile.BlobFileId+'.jpeg)'"></div>
+        </ion-slide>
+      </ion-slides>
+  </div>
 
   <div class="item-detail" padding>
     <h2>{{item.Title}}</h2>
     <p>{{item.Description}}</p>
   </div>
+
 </ion-content>

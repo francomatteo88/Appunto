@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators,FormControl , FormArray } from '@angular/forms';
 import { Camera } from '@ionic-native/camera';
 import { IonicPage, NavController, ViewController } from 'ionic-angular';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
@@ -22,29 +22,30 @@ export class ItemCreatePage {
  
   constructor(public navCtrl: NavController, public viewCtrl: ViewController,public  formBuilder: FormBuilder, public camera: Camera, private http: Http,public storage: Storage) {
     this.form = formBuilder.group({
-      Images: formBuilder.array([
-        this.initImage()
-      ]),
-      Title: ['', Validators.required],
-      Description: ['']
+      Images: formBuilder.array([]), 
+      Title: ['', Validators.required], 
+      Description: [''],
+      CityId: 1,
+      CategoryId:1,
+      AdvertisementTypeId: 0
     });
     this.form.valueChanges.subscribe((v) => {
       this.isReadyToSave = this.form.valid;
     });
   }
 
-  initImage() {
+  initImage(data: any) {
     // initialize our address
     return this.formBuilder.group({
-        imageData: ['']
-    });
+        imageData: [data]
+    });  
   }
-
-//   addAddress() {
-//     // add address to the list
-//     const control = <FormArray>this.myForm.controls['addresses'];
-//     control.push(this.initAddress());
-// }
+ 
+  addAddress(data: any) {
+    // add address to the list
+    const control = <FormArray>this.form.controls['Images'];
+    control.push(this.initImage(data));
+  }
 
 // removeAddress(i: number) {
 //     // remove address from the list
@@ -64,7 +65,9 @@ export class ItemCreatePage {
         targetWidth: 640,
         targetHeight: 640 
       }).then((data) => {
-        this.form.patchValue({ 'profilePic': 'data:image/jpeg;base64,' + data });
+        //this.form.patchValue({ 'profilePic': 'data:image/jpeg;base64,' + data });
+        this.addAddress('data:image/jpeg;base64,' + data );
+        //fai add sulla lista
       }, (err) => {
         alert('Unable to take photo');
       })
@@ -73,18 +76,18 @@ export class ItemCreatePage {
     }
   }
 
+  // per seleziona da gallery
   processWebImage(event) {
     let reader = new FileReader();
     reader.onload = (readerEvent) => {
       let imageData = (readerEvent.target as any).result;
-      this.form.patchValue({ 'profilePic': imageData });
+      //this.form.patchValue({ 'profilePic': imageData });
+      this.addAddress(imageData);
     };
     reader.readAsDataURL(event.target.files[0]);
   } 
+    
 
-  getProfileImageStyle() {
-    return 'url(' + this.form.controls['profilePic'].value + ')'
-  }
 
   cancel() {
     this.viewCtrl.dismiss();
@@ -103,12 +106,14 @@ export class ItemCreatePage {
     headers.append("Authorization", "Basic " + btoa(username + ":" + password));  
     let options = new RequestOptions({ headers: headers });
 
-    var body = JSON.stringify({
-        Images: this.form.controls.profilePic.value,
-        Title: this.form.controls['Title'].value,
-        Description: this.form.controls['Description'].value,
-		    CityId: 1
-    });
+    var body = JSON.stringify(this.form.getRawValue());
+
+    // var body = JSON.stringify({
+    //     //Images: this.form.controls['Images'],
+    //     Title: this.form.controls['Title'].value,
+    //     Description: this.form.controls['Description'].value,
+		//     CityId: 1
+    // });
 
     this.http.post(urlcategory, body, options ).subscribe();
     this.viewCtrl.dismiss();

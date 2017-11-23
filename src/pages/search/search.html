@@ -24,10 +24,11 @@
 
                   <ion-card (click)="openItem(item)" *ngFor="let item of firstColumnItems" >
                     
-                    <div *ngIf="!item.ImageBlobFileId" style="width:100px; padding:50%;border: 1px solid lightgrey;background-color: lightgrey;" ></div>
-                    
-                    <img *ngIf="item.ImageBlobFileId" src="https://puntostorage.blob.core.windows.net/punto-public/{{item.ImageBlobFileId}}.jpeg"/>
-                    
+                 
+                    <div *ngIf="!item.BlobFiles[0]" style="width:100px; padding:50%;border: 1px solid lightgrey;background-color: lightgrey;" ></div>
+                        
+                    <img *ngIf="item.BlobFiles[0]" src="https://puntostorage.blob.core.windows.net/punto-public/{{item.BlobFiles[0].BlobFileId}}.jpeg"/>
+                            
                     <ion-card-content>
                         <p>
                         {{item.Title}}
@@ -44,17 +45,17 @@
           <!-- <ion-item *ngFor="let item of secondColumnItems" > -->
 
           <ion-card (click)="openItem(item)" *ngFor="let item of secondColumnItems" >
-
-                    
-              <div *ngIf="!item.ImageBlobFileId" style="width:100px; padding:50%;border: 1px solid lightgrey;background-color: lightgrey;" ></div>
-                
-              <img *ngIf="item.ImageBlobFileId" src="https://puntostorage.blob.core.windows.net/punto-public/{{item.ImageBlobFileId}}.jpeg"/>
+             
+              <div *ngIf="!item.BlobFiles[0]" style="width:100px; padding:50%;border: 1px solid lightgrey;background-color: lightgrey;" ></div>
+            
+              <img *ngIf="item.BlobFiles[0]" src="https://puntostorage.blob.core.windows.net/punto-public/{{item.BlobFiles[0].BlobFileId}}.jpeg"/>
                 
               <ion-card-content>
                   <p>
                     {{item.Title}}
                   </p> 
               </ion-card-content>
+              
             </ion-card>
 
         <!-- </ion-item>       -->
