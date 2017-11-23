@@ -1,17 +1,17 @@
 <ion-header>
   <ion-navbar  color="custom-green">
-    <ion-title>Accesso</ion-title>
+    <ion-title>Login o Registrazione</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content>
   <form (submit)="doLogin()">
     <ion-list>
       <ion-item>
-        <ion-label fixed>Email</ion-label>
+        <ion-label>Email</ion-label>
         <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label fixed>Password</ion-label>
+        <ion-label>Password</ion-label>
         <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
       </ion-item>
       <div padding>
@@ -19,4 +19,8 @@
       </div>
     </ion-list>
   </form>
+  <div padding style="margin-top:10px;">
+    <button  ion-button color="primary" block (click)="Register()">Registrati</button>
+  </div>
+
 </ion-content>

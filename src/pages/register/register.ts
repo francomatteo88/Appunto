@@ -4,18 +4,19 @@ import { HttpClient } from '@angular/common/http';
 import { SearchPage } from '../search/search';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Storage } from '@ionic/storage';
-import { RegisterPage } from '../register/register';
 
 @IonicPage()
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html'
+  selector: 'page-register',
+  templateUrl: 'register.html'
 })
-export class LoginPage {
+export class RegisterPage {
 
-  account: { email: string, password: string } = {
+  account: { email: string, password: string, firstname:string, lastname:string } = {
     email: '',
-    password: ''
+    password: '',
+    firstname: '',
+    lastname: ''
   };
 
   // Our translated text strings
@@ -24,45 +25,27 @@ export class LoginPage {
   constructor(public navCtrl: NavController,
     private http: Http,
     public toastCtrl: ToastController,public storage: Storage) {
- 
-      this.storage.get("email").then((value) => {
-        if (value) {
-        }
-      });
-
-      this.storage.get("password").then((value) => {
-        if (value) {
-          
-        }
-      });
-
   }
- 
-  
- 
+
   // Attempt to login in through our User service
-  doLogin() {
+  doRegister() {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json'); 
     let options = new RequestOptions({ headers: headers });
     var body = JSON.stringify(this.account);
-    this.http.post("http://punto20171017111129.azurewebsites.net/api/Login", body, options).subscribe((resp) => {
+    this.http.post("http://punto20171017111129.azurewebsites.net/api/User", body, options).subscribe((resp) => {
       this.storage.set("email", this.account.email);
       this.storage.set("password", this.account.password);
-      this.navCtrl.setRoot(SearchPage); 
+      this.navCtrl.setRoot(SearchPage);
   }, err => {
     let toast = this.toastCtrl.create({
-      message: "Email o password sbagliata",
+      message: "Errore in registrazione",
       duration: 3000,
       position: 'top'
     }); 
     toast.present();
   });
+
   }
 
-
-  Register() {
-
-    this.navCtrl.push(RegisterPage);
-  }
 }

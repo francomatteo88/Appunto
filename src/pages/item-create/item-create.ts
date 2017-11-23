@@ -1,9 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import { Camera } from '@ionic-native/camera';
 import { IonicPage, NavController, ViewController } from 'ionic-angular';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
+import { Storage } from '@ionic/storage';
+
 
 @IonicPage() 
 @Component({
@@ -18,16 +20,38 @@ export class ItemCreatePage {
   item: any;
   form: FormGroup;
  
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera, private http: Http) {
+  constructor(public navCtrl: NavController, public viewCtrl: ViewController,public  formBuilder: FormBuilder, public camera: Camera, private http: Http,public storage: Storage) {
     this.form = formBuilder.group({
-      profilePic: [''],
-      name: ['', Validators.required],
-      about: ['']
+      Images: formBuilder.array([
+        this.initImage()
+      ]),
+      Title: ['', Validators.required],
+      Description: ['']
     });
     this.form.valueChanges.subscribe((v) => {
       this.isReadyToSave = this.form.valid;
     });
   }
+
+  initImage() {
+    // initialize our address
+    return this.formBuilder.group({
+        imageData: ['']
+    });
+  }
+
+//   addAddress() {
+//     // add address to the list
+//     const control = <FormArray>this.myForm.controls['addresses'];
+//     control.push(this.initAddress());
+// }
+
+// removeAddress(i: number) {
+//     // remove address from the list
+//     const control = <FormArray>this.myForm.controls['addresses'];
+//     control.removeAt(i);
+// }
+
 
   ionViewDidLoad() {
 
@@ -80,9 +104,9 @@ export class ItemCreatePage {
     let options = new RequestOptions({ headers: headers });
 
     var body = JSON.stringify({
-        ImageData: this.form.controls.profilePic.value,
-        Title: this.form.controls['name'].value,
-        Description: this.form.controls['about'].value,
+        Images: this.form.controls.profilePic.value,
+        Title: this.form.controls['Title'].value,
+        Description: this.form.controls['Description'].value,
 		    CityId: 1
     });
 

@@ -5,6 +5,7 @@ import { SearchModalPage } from '../search-modal/search-modal';
 import "rxjs/Rx";
 import { ItemCreatePage } from '../item-create/item-create';
 import { LoginPage } from '../login/login';
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -20,7 +21,19 @@ export class SearchPage {
   secondColumnItems: any = [];
   loading: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient, public modalCtrl: ModalController,public  loadingCtrl: LoadingController ) { 
+  loggedIn: boolean = false;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient, public modalCtrl: ModalController,public  loadingCtrl: LoadingController,public storage: Storage ) { 
+
+    var email: string = "";
+    this.storage.get("email").then((value) => {
+      if (value != null) {
+        email = value;
+        this.loggedIn = true;
+      }
+    });
+
+
   }
 
   presentLoadingDefault() {
@@ -93,8 +106,11 @@ export class SearchPage {
     this.navCtrl.push(ItemCreatePage);
   }
 
-  myprofile(){
+  login(){
     this.navCtrl.push(LoginPage);
   }
 
+  myprofile(){
+    this.navCtrl.push(LoginPage);
+  }
 }
