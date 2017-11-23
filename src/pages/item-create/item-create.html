@@ -15,15 +15,10 @@
 
 </ion-header>
 <ion-content>
-<<<<<<< HEAD
    <form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">
 
 
    <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
-=======
-  <form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">
-    <!-- <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
->>>>>>> fcb6f6cdd1acb5132116102b1ac4c872cdaa3710
     <div class="profile-image-wrapper" (click)="getPicture()">
       <div class="profile-image-placeholder">
         <ion-icon name="add"></ion-icon>
@@ -31,7 +26,6 @@
            Carica un'immagine
         </div> 
       </div>
-<<<<<<< HEAD
    
     </div> 
 
@@ -40,12 +34,6 @@
    
   <div formArrayName="Images">
 
-=======
-      <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>
-    </div> -->
-
-    <div formArrayName="Images">
->>>>>>> fcb6f6cdd1acb5132116102b1ac4c872cdaa3710
 		<div *ngFor="let address of form.controls.Images.controls; let i=index">
           <!-- address header, show remove button when more than one address available -->
           <div>
@@ -53,7 +41,6 @@
               <span *ngIf="form.controls.Images.controls.length > 1" (click)="removeAddress(i)">
               </span>
           </div>
-<<<<<<< HEAD
    
           <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
           <div [formGroupName]="i">
@@ -66,35 +53,16 @@
 			</div>
     </div>
     
-=======
-
-          <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
-          <div [formGroupName]="i">
-              <div>
-                  <label>image</label>
-                  <input type="text" formControlName="imageData">
-              </div>
-			</div>
-		</div>
->>>>>>> fcb6f6cdd1acb5132116102b1ac4c872cdaa3710
 	</div>
 
 
     <ion-list>
       <ion-item>
-<<<<<<< HEAD
         <ion-input type="text" placeholder="Titolo" formControlName="Title"></ion-input>
       </ion-item>
 	  
       <ion-item>
         <ion-input type="text" placeholder="Descrizione" formControlName="Description"></ion-input>
-=======
-        <ion-input type="text" placeholder="Titolo" formControlName="Titolo"></ion-input>
-      </ion-item>
-	  
-      <ion-item>
-        <ion-input type="text" placeholder="Descrizione" formControlName="Descrizione"></ion-input>
->>>>>>> fcb6f6cdd1acb5132116102b1ac4c872cdaa3710
       </ion-item>
     </ion-list>
 	
