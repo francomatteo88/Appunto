@@ -101,13 +101,14 @@ export class ItemCreatePage {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     let username: string = 'matteo';
-    let password: string = 'Sup3rg3n10';
+    
+    let password: string = 'Sup3rg3n10'; 
 
     headers.append("Authorization", "Basic " + btoa(username + ":" + password));  
     let options = new RequestOptions({ headers: headers });
 
     var body = JSON.stringify(this.form.getRawValue());
-
+ 
     // var body = JSON.stringify({
     //     //Images: this.form.controls['Images'],
     //     Title: this.form.controls['Title'].value,
