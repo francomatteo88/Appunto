@@ -20,18 +20,38 @@ export class ItemCreatePage {
   item: any;
   form: FormGroup;
  
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera, private http: Http,public storage: Storage) {
+  constructor(public navCtrl: NavController, public viewCtrl: ViewController,public  formBuilder: FormBuilder, public camera: Camera, private http: Http,public storage: Storage) {
     this.form = formBuilder.group({
-      images: formBuilder.array([
-        new FormControl()
+      Images: formBuilder.array([
+        this.initImage()
       ]),
-      name: ['', Validators.required],
-      about: ['']
+      Title: ['', Validators.required],
+      Description: ['']
     });
     this.form.valueChanges.subscribe((v) => {
       this.isReadyToSave = this.form.valid;
     });
   }
+
+  initImage() {
+    // initialize our address
+    return this.formBuilder.group({
+        imageData: ['']
+    });
+  }
+
+//   addAddress() {
+//     // add address to the list
+//     const control = <FormArray>this.myForm.controls['addresses'];
+//     control.push(this.initAddress());
+// }
+
+// removeAddress(i: number) {
+//     // remove address from the list
+//     const control = <FormArray>this.myForm.controls['addresses'];
+//     control.removeAt(i);
+// }
+
 
   ionViewDidLoad() {
 
@@ -85,8 +105,8 @@ export class ItemCreatePage {
 
     var body = JSON.stringify({
         Images: this.form.controls.profilePic.value,
-        Title: this.form.controls['name'].value,
-        Description: this.form.controls['about'].value,
+        Title: this.form.controls['Title'].value,
+        Description: this.form.controls['Description'].value,
 		    CityId: 1
     });
 

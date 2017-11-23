@@ -16,7 +16,7 @@
 </ion-header>
 <ion-content>
   <form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">
-    <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
+    <!-- <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
     <div class="profile-image-wrapper" (click)="getPicture()">
       <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">
         <ion-icon name="add"></ion-icon>
@@ -25,15 +25,38 @@
         </div> 
       </div>
       <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>
-    </div>
+    </div> -->
+
+    <div formArrayName="Images">
+		<div *ngFor="let address of form.controls.Images.controls; let i=index">
+          <!-- address header, show remove button when more than one address available -->
+          <div>
+              <span>Immagini {{i + 1}}</span>
+              <span *ngIf="form.controls.Images.controls.length > 1" (click)="removeAddress(i)">
+              </span>
+          </div>
+
+          <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
+          <div [formGroupName]="i">
+              <div>
+                  <label>image</label>
+                  <input type="text" formControlName="imageData">
+              </div>
+			</div>
+		</div>
+	</div>
+
+
     <ion-list>
       <ion-item>
-        <ion-input type="text" placeholder="Titolo" formControlName="name"></ion-input>
+        <ion-input type="text" placeholder="Titolo" formControlName="Titolo"></ion-input>
       </ion-item>
+	  
       <ion-item>
-        <ion-input type="text" placeholder="Descrizione" formControlName="about"></ion-input>
+        <ion-input type="text" placeholder="Descrizione" formControlName="Descrizione"></ion-input>
       </ion-item>
     </ion-list>
+	
   </form>
    <button ion-button (click)="done()" strong class="button-block" color="custom-green">
         <span color="primary">
