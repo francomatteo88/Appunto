@@ -19,6 +19,9 @@ export class ItemCreatePage {
   isReadyToSave: boolean;
   item: any;
   form: FormGroup;
+
+  email: any;
+  password: any;
  
   constructor(public navCtrl: NavController, public viewCtrl: ViewController,public  formBuilder: FormBuilder, public camera: Camera, private http: Http,public storage: Storage) {
     this.form = formBuilder.group({
@@ -32,6 +35,22 @@ export class ItemCreatePage {
     this.form.valueChanges.subscribe((v) => {
       this.isReadyToSave = this.form.valid;
     });
+
+
+    this.storage.get("email").then((value) => {
+      if (value != null) {
+        this.email = value;
+      }
+    });
+
+    this.storage.get("password").then((value) => {
+      if (value != null) {
+        this.password = value;
+      }
+    });
+
+
+
   }
 
   initImage(data: any) {
@@ -100,20 +119,13 @@ export class ItemCreatePage {
    
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    let username: string = 'matteo';
-    let password: string = 'Sup3rg3n10';
+    let username: string = this.email;
+    let password: string = this.password;
 
     headers.append("Authorization", "Basic " + btoa(username + ":" + password));  
     let options = new RequestOptions({ headers: headers });
 
     var body = JSON.stringify(this.form.getRawValue());
-
-    // var body = JSON.stringify({
-    //     //Images: this.form.controls['Images'],
-    //     Title: this.form.controls['Title'].value,
-    //     Description: this.form.controls['Description'].value,
-		//     CityId: 1
-    // });
 
     this.http.post(urlcategory, body, options ).subscribe();
     this.viewCtrl.dismiss();

@@ -11,6 +11,7 @@ import { ItemCreatePage } from '../pages/item-create/item-create';
 import { SearchModalPage } from '../pages/search-modal/search-modal'; 
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
+import { ProfilePage } from '../pages/profile/profile';
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
  
@@ -21,6 +22,7 @@ import { IonicStorageModule } from '@ionic/storage';
     ItemCreatePage,
     SearchModalPage,
     RegisterPage,  
+    ProfilePage,  
     LoginPage
   ],
   imports: [
@@ -37,6 +39,7 @@ import { IonicStorageModule } from '@ionic/storage';
     ItemCreatePage,
     SearchModalPage,
     RegisterPage,
+    ProfilePage,
     LoginPage
   ],
   providers: [
