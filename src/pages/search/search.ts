@@ -5,6 +5,7 @@ import { SearchModalPage } from '../search-modal/search-modal';
 import "rxjs/Rx";
 import { ItemCreatePage } from '../item-create/item-create';
 import { LoginPage } from '../login/login';
+import { ProfilePage } from '../profile/profile';
 import { Storage } from '@ionic/storage';
 
 @IonicPage()
@@ -30,7 +31,7 @@ export class SearchPage {
       if (value != null) {
         email = value;
         this.loggedIn = true;
-      }
+      } 
     });
 
 
@@ -42,7 +43,7 @@ export class SearchPage {
     });
     this.loading.present();
   };
-  
+   
   dismissLoading(){
     this.loading.dismiss();
   }
@@ -111,6 +112,7 @@ export class SearchPage {
   }
 
   myprofile(){
-    this.navCtrl.push(LoginPage);
+  
+    this.navCtrl.push(ProfilePage);
   }
 }

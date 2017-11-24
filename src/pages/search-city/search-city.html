@@ -1,0 +1,30 @@
+<ion-header> 
+    <ion-toolbar>  
+       <ion-buttons left>
+         <button ion-button icon-only (click)="cancel()" style="margin-left: 12px;"> 
+           <ion-icon name="arrow-back"></ion-icon>
+         </button>  
+       </ion-buttons> 
+
+     <ion-title>
+        <ion-searchbar  [(ngModel)]="searchkey" [showCancelButton]="shouldShowCancel" (ionInput)="getCities($event)" (ionCancel)="onCancel($event)" #mainSearchbar placeholder="Cerca città"></ion-searchbar>
+   </ion-title>  
+
+   </ion-toolbar> 
+
+ </ion-header>
+
+<ion-content>
+ 
+
+ <ion-list >
+
+  <ion-item *ngFor="let item of cities" >
+
+      <div (click)="select(item)">{{item.Name}}</div>
+
+  </ion-item>
+
+ </ion-list>
+
+</ion-content> 

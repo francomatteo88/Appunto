@@ -6,52 +6,62 @@ import "rxjs/Rx";
 import { ItemCreatePage } from '../item-create/item-create';
 import { LoginPage } from '../login/login';
 import { Storage } from '@ionic/storage';
-
-@IonicPage()
-@Component({
+import { Http, Response, RequestOptions, Headers } from '@angular/http';
+   
+@IonicPage() 
+@Component({ 
   selector: 'page-profile',
   templateUrl: 'profile.html'
 })
 export class ProfilePage {
   
-  skip: any = 0;
-  searchkey :any;
+
+  email: any; 
+  password: any;
   currentItems: any = [];
-  
-  advertisements: any = [];
-
-  loading: any;
-
-  loggedIn: boolean = false;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient, public modalCtrl: ModalController,public  loadingCtrl: LoadingController,public storage: Storage ) { 
-
-    var email: string = "";
+  advs: any = []; 
+ 
+  constructor(public navCtrl: NavController,  public navParams: NavParams, private http: Http, public modalCtrl: ModalController,public  loadingCtrl: LoadingController,public storage: Storage ) { 
+ 
     this.storage.get("email").then((value) => {
       if (value != null) {
-        email = value;
-        this.loggedIn = true;
+        this.email = value;
+ 
+        this.storage.get("password").then((value) => {
+          if (value != null) {
+            this.password = value; 
+            this.loadData();
+
+          }
+        }); 
+
       }
     });
+ 
+  }
+  
+
+  loadData(){
+
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    headers.append("Authorization", "Basic " + btoa(this.email + ":" + this.password));  
+    let options = new RequestOptions({ headers: headers });
 
     //get annunci
-    this.http.get("http://punto20171017111129.azurewebsites.net/api/")
-    .subscribe(result => {      
-      this.currentItems = result;
-      this.firstColumnItems = [];
-      this.secondColumnItems = [];
-      for (var i = 0; i < this.currentItems.length; i++) { 
-        if ( i % 2 == 0){  
-          this.firstColumnItems.push(this.currentItems[i]);
-        }else{
-          this.secondColumnItems.push(this.currentItems[i]);
-        };
+    this.http.get("http://punto20171017111129.azurewebsites.net/api/Advertisement",options )
+    .subscribe(result => {   
+      
+      this.currentItems = result.json();   
+
+      for (var i = 0; i <  this.currentItems.length; i++) { 
+        this.advs.push(this.currentItems[i]);
       };
-      this.dismissLoading();
+   
+
      });
-
   }
-
 
   openPage(page) {
     // Reset the content nav to have just this page

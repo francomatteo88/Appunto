@@ -3,14 +3,32 @@
 <ion-header> 
   <ion-navbar color="custom-green">
     <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+      <ion-icon name="menu"></ion-icon> 
     </button>
+    <ion-title>I miei annunci</ion-title>
   </ion-navbar>
-</ion-header>
-
+</ion-header> 
+ 
 <ion-content>
-   
-  
+    <ion-grid> 
+        <ion-row>
+            <ion-col col-12>
+ 
+  <ion-card (click)="openItem(item)" *ngFor="let item of advs" >
+    
+    <div *ngIf="!item.BlobFiles[0]" style="width:100px; padding:50%;border: 1px solid lightgrey;background-color: lightgrey;" ></div>
+        
+    <img *ngIf="item.BlobFiles[0]" src="https://puntostorage.blob.core.windows.net/punto-public/{{item.BlobFiles[0].BlobFileId}}.jpeg"/>
+            
+    <ion-card-content>
+        <p>
+        {{item.Title}}
+        </p> 
+        </ion-card-content>
+    </ion-card>
+            </ion-col> 
+        </ion-row>
+    </ion-grid>
 </ion-content>
 
 

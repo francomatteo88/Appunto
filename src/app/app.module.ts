@@ -9,6 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ItemCreatePage } from '../pages/item-create/item-create';
 import { SearchModalPage } from '../pages/search-modal/search-modal'; 
+import { SearchCityPage } from '../pages/search-city/search-city'; 
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { ProfilePage } from '../pages/profile/profile';
@@ -21,12 +22,13 @@ import { IonicStorageModule } from '@ionic/storage';
     SearchPage,
     ItemCreatePage,
     SearchModalPage,
+    SearchCityPage, 
     RegisterPage,  
     ProfilePage,  
-    LoginPage
+    LoginPage 
   ],
   imports: [
-    BrowserModule, 
+    BrowserModule,  
     HttpClientModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
@@ -38,6 +40,7 @@ import { IonicStorageModule } from '@ionic/storage';
     SearchPage,
     ItemCreatePage,
     SearchModalPage,
+    SearchCityPage, 
     RegisterPage,
     ProfilePage,
     LoginPage

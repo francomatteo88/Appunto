@@ -6,9 +6,9 @@ import { SearchModalPage } from '../search-modal/search-modal';
 @NgModule({
   declarations: [
     ProfilePage,
-    SearchModalPage
+    SearchModalPage 
   ],
-  imports: [
+  imports: [ 
     IonicPageModule.forChild(ProfilePage),
   ],
   exports: [
