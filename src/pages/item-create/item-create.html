@@ -63,14 +63,14 @@
            
            <ion-item (click)="citysearch()" > 
                <ion-label stacked>Luogo in cui si trova</ion-label>
-               <ion-input type="text">{{cityname}}</ion-input>
+               <ion-input type="text" formControlName="cityname"></ion-input>>
               
            </ion-item>
 	
   </form>
    <button ion-button (click)="done()" strong class="button-block" color="custom-green">
         <span color="primary">
-          Crea
+          CREA
         </span>
     </button> 
 </ion-content>

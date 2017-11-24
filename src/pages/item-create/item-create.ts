@@ -32,7 +32,8 @@ export class ItemCreatePage {
       Description: [''], 
       CityId: 1,
       CategoryId: ['', Validators.required], 
-      AdvertisementTypeId: 0
+      AdvertisementTypeId: 0,
+      cityname: ['']
     });
     this.form.valueChanges.subscribe((v) => {
       this.isReadyToSave = this.form.valid;
@@ -141,7 +142,8 @@ export class ItemCreatePage {
 
     itemcreateModal.onDidDismiss(data => {
       this.form.patchValue({ 'CityId': data.CityId });
-      this.cityname = data.Name;
+  
+      this.form.patchValue({ 'cityname': data.Name });
     });
 
 

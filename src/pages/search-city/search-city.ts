@@ -16,7 +16,7 @@ export class SearchCityPage {
   constructor(public navCtrl: NavController, navParams: NavParams, public viewCtrl: ViewController, private http: HttpClient  ) {
      this.searchkey = navParams.get('searchkey');
   
-  }  
+  }   
   
   ionViewDidEnter() {
 	setTimeout(()=>{

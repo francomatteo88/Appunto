@@ -15,14 +15,16 @@ import { RegisterPage } from '../pages/register/register';
 import { ProfilePage } from '../pages/profile/profile';
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
+import { AdvancedSearchPage } from '../pages/advanced-search/advanced-search'; 
  
-@NgModule({
+@NgModule({ 
   declarations: [ 
     MyApp,
     SearchPage,
     ItemCreatePage,
     SearchModalPage,
-    SearchCityPage, 
+    SearchCityPage,
+    AdvancedSearchPage, 
     RegisterPage,  
     ProfilePage,  
     LoginPage 
@@ -40,6 +42,7 @@ import { IonicStorageModule } from '@ionic/storage';
     SearchPage,
     ItemCreatePage,
     SearchModalPage,
+    AdvancedSearchPage, 
     SearchCityPage, 
     RegisterPage,
     ProfilePage,

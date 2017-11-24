@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ModalController,IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { SearchModalPage } from '../search-modal/search-modal';
+import { AdvancedSearchPage } from '../advanced-search/advanced-search';
 import "rxjs/Rx";
 import { ItemCreatePage } from '../item-create/item-create';
 import { LoginPage } from '../login/login';
@@ -21,6 +22,9 @@ export class SearchPage {
   firstColumnItems: any = [];
   secondColumnItems: any = [];
   loading: any;
+  CategoryId :any;
+  CityId :any;
+  CityName:any;
 
   loggedIn: boolean = false;
 
@@ -44,10 +48,20 @@ export class SearchPage {
     this.loading.present();
   };
    
-  dismissLoading(){
+  dismissLoading(){ 
     this.loading.dismiss();
   }
 
+  advancedsearch(){
+    let itemcreateModal = this.modalCtrl.create(AdvancedSearchPage, { searchkey: this.searchkey });
+
+    itemcreateModal.onDidDismiss(data => {
+    
+    });
+
+    itemcreateModal.present();
+
+  }
 
   searchmodal() {   
     let itemcreateModal = this.modalCtrl.create(SearchModalPage, { searchkey: this.searchkey });
