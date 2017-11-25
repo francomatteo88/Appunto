@@ -1,11 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators,FormControl , FormArray } from '@angular/forms';
 import { Camera } from '@ionic-native/camera';
-import { IonicPage, NavController, ViewController } from 'ionic-angular';
+import { ModalController, IonicPage, NavController, ViewController } from 'ionic-angular';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Storage } from '@ionic/storage';
-
+import { SearchCityPage } from '../search-city/search-city'; 
 
 @IonicPage() 
 @Component({
@@ -19,19 +19,41 @@ export class ItemCreatePage {
   isReadyToSave: boolean;
   item: any;
   form: FormGroup;
+
+  cityname :any;
+
+  email: any;
+  password: any;
  
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController,public  formBuilder: FormBuilder, public camera: Camera, private http: Http,public storage: Storage) {
+  constructor(public navCtrl: NavController, public viewCtrl: ViewController,public  formBuilder: FormBuilder, public camera: Camera, private http: Http,public storage: Storage, public modalCtrl: ModalController) {
     this.form = formBuilder.group({
       Images: formBuilder.array([]), 
       Title: ['', Validators.required], 
-      Description: [''],
+      Description: [''], 
       CityId: 1,
-      CategoryId:1,
-      AdvertisementTypeId: 0
+      CategoryId: ['', Validators.required], 
+      AdvertisementTypeId: 0,
+      cityname: ['']
     });
     this.form.valueChanges.subscribe((v) => {
       this.isReadyToSave = this.form.valid;
     });
+
+
+    this.storage.get("email").then((value) => {
+      if (value != null) {
+        this.email = value;
+      }
+    });
+
+    this.storage.get("password").then((value) => {
+      if (value != null) {
+        this.password = value;
+      }
+    });
+
+
+
   }
 
   initImage(data: any) {
@@ -64,7 +86,7 @@ export class ItemCreatePage {
         destinationType: this.camera.DestinationType.DATA_URL,
         targetWidth: 640,
         targetHeight: 640 
-      }).then((data) => {
+      }).then((data) => { 
         //this.form.patchValue({ 'profilePic': 'data:image/jpeg;base64,' + data });
         this.addAddress('data:image/jpeg;base64,' + data );
         //fai add sulla lista
@@ -100,24 +122,33 @@ export class ItemCreatePage {
    
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    let username: string = 'matteo';
-    
-    let password: string = 'Sup3rg3n10'; 
+    let username: string = this.email;
+    let password: string = this.password;
 
     headers.append("Authorization", "Basic " + btoa(username + ":" + password));  
     let options = new RequestOptions({ headers: headers });
 
     var body = JSON.stringify(this.form.getRawValue());
- 
-    // var body = JSON.stringify({
-    //     //Images: this.form.controls['Images'],
-    //     Title: this.form.controls['Title'].value,
-    //     Description: this.form.controls['Description'].value,
-		//     CityId: 1
-    // });
 
     this.http.post(urlcategory, body, options ).subscribe();
     this.viewCtrl.dismiss();
     //this.viewCtrl.dismiss(this.form.value);
   }
+ 
+ 
+  citysearch() {   
+    let itemcreateModal = this.modalCtrl.create(SearchCityPage);
+
+
+    itemcreateModal.onDidDismiss(data => {
+      this.form.patchValue({ 'CityId': data.CityId });
+  
+      this.form.patchValue({ 'cityname': data.Name });
+    });
+
+
+    itemcreateModal.present();
+  }
+
+
 }

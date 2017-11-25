@@ -17,59 +17,60 @@
 <ion-content>
    <form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">
 
+    <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
 
-   <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
-    <div class="profile-image-wrapper" (click)="getPicture()">
-      <div class="profile-image-placeholder">
-        <ion-icon name="add"></ion-icon>
-        <div>
-           Carica un'immagine
-        </div> 
-      </div>
-   
-    </div> 
+      <div class="profile-image-wrapper" (click)="getPicture()"  formArrayName="Images">            
+                <div *ngFor="let address of form.controls.Images.controls; let i=index">
+                      <div [formGroupName]="i">
+                          <div>
+                              <span *ngIf="form.controls.Images.controls.length > 1" (click)="removeAddress(i)"> </span>
+                              
+                              <div class="profile-image" [style.background-image]="'url('+ form.controls.Images.controls[i].controls.imageData.value +')'" ></div> 
+                          </div>
+                      </div>
+                </div> 
+                <div class="profile-image-placeholder">
+                  <ion-icon name="add" ></ion-icon>
+                  <div>
+                    Immagine
+                  </div> 
+                </div>
+	      </div>
 
+        <ion-item>
+            <ion-label stacked>Titolo</ion-label>
+            <ion-input type="text" formControlName="Title"></ion-input>
+          </ion-item>
 
-  <!-- <div (click)="addAddress()">Aggiungi</div> -->
-   
-  <div formArrayName="Images">
+          <ion-item>
+              <ion-label stacked>Descrizione</ion-label>
+              <ion-textarea type="text" formControlName="Description"></ion-textarea>
+          </ion-item> 
+ 
+          <ion-item> 
+              <ion-label stacked>Categoria</ion-label>
+              <ion-select formControlName="CategoryId">
+                <ion-option value="1">Auto</ion-option>
+                <ion-option value="2">Accessori casa</ion-option>
+                <ion-option value="3">Abbigliamento</ion-option>
+                <ion-option value="4">Elettronica</ion-option>
+                <ion-option value="5">Giocattoli</ion-option> 
+                <ion-option value="6">Libri</ion-option>
+                <ion-option value="7">CD/Vinili</ion-option>
+              </ion-select>
+           </ion-item>
 
-		<div *ngFor="let address of form.controls.Images.controls; let i=index">
-          <!-- address header, show remove button when more than one address available -->
-          <div>
-              <span>Immagini {{i + 1}}</span>
-              <span *ngIf="form.controls.Images.controls.length > 1" (click)="removeAddress(i)">
-              </span>
-          </div>
-   
-          <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
-          <div [formGroupName]="i">
-              <div>
-                  <label>image</label> 
-                  <input type="text" formControlName="imageData">
-                  
-                  <div class="profile-image" [style.background-image]="'url('+ form.controls.Images.controls[i].controls.imageData.value +')'" ></div> 
-              </div>
-			</div>
-    </div>
-    
-	</div>
-
-
-    <ion-list>
-      <ion-item>
-        <ion-input type="text" placeholder="Titolo" formControlName="Title"></ion-input>
-      </ion-item>
-	  
-      <ion-item>
-        <ion-input type="text" placeholder="Descrizione" formControlName="Description"></ion-input>
-      </ion-item>
-    </ion-list>
+           
+           <ion-item (click)="citysearch()" > 
+               <ion-label stacked>Luogo in cui si trova</ion-label>
+               <ion-input type="text" formControlName="cityname"></ion-input>>
+              
+           </ion-item>
 	
   </form>
    <button ion-button (click)="done()" strong class="button-block" color="custom-green">
         <span color="primary">
-          Crea
+          CREA
         </span>
     </button> 
 </ion-content>

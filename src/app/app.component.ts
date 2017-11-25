@@ -3,6 +3,7 @@ import { ModalController, Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SearchPage } from '../pages/search/search';
+import { WelcomePage } from '../pages/welcome/welcome';
 import { ItemCreatePage } from '../pages/item-create/item-create';
  
 
@@ -10,12 +11,12 @@ import { ItemCreatePage } from '../pages/item-create/item-create';
   selector: 'MyApp',
   templateUrl: 'app.html'
 })
-export class MyApp {
+export class MyApp {  
   @ViewChild(Nav) nav: Nav; 
-
-  rootPage: any = SearchPage;
+ 
+  rootPage: any = WelcomePage;
   createPage: any = ItemCreatePage;
-
+  
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public modalCtrl: ModalController) {

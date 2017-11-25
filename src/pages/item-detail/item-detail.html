@@ -1,10 +1,8 @@
 <ion-header>
-
-  <ion-navbar>
+  <ion-navbar color="custom-green">
     <ion-title>{{ item.Title }}</ion-title>
-  </ion-navbar>
-
-</ion-header>
+  </ion-navbar>    
+</ion-header>  
 
 <ion-content>
 
@@ -12,13 +10,29 @@
     <ion-slides>    
         <ion-slide *ngFor="let blobfile of item.BlobFiles" >
             <div class="item-profile" style="height: 350px;background-size: cover;" text-center #ImageBlobFileId [style.background-image]="'url(https://puntostorage.blob.core.windows.net/punto-public/'+ blobfile.BlobFileId+'.jpeg)'"></div>
-        </ion-slide>
+           
+      
+          </ion-slide>
       </ion-slides>
   </div>
 
   <div class="item-detail" padding>
+    <p style="float:left">{{item.User.FirstName}} {{item.User.SecondName}}</p>
+    <p style="float:right">{{item.Category.Name}} - {{item.City.Name}}</p>
+    <div style="clear:both"></div>
     <h2>{{item.Title}}</h2>
     <p>{{item.Description}}</p>
   </div>
+
+  <form (ngSubmit)="newchat()">
+
+      <button type="submit" ion-button strong class="button-block" color="custom-green">
+          <span color="primary">
+            INVIA MESSAGGIO
+          </span>
+      </button> 
+    </form>
+
+
 
 </ion-content>

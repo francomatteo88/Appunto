@@ -1,9 +1,9 @@
-page-search-modal{
+search-city{
 
     .searchbar-md .searchbar-input{
         background-color: transparent;
         box-shadow: none;
-        -webkit-box-shadow:none;
+        -webkit-box-shadow:none; 
     }
 
    .searchbar-search-icon{
@@ -13,15 +13,4 @@ page-search-modal{
     .searchbar-md .searchbar-input {
         padding:0px;
     }
-
-      
-  .button-md{
-    position: fixed;
-    bottom: 0px;
-    border-radius: 0px;
-    padding:1.5em 2em;
-    margin:0px;
-    font-size: 2rem;
-  }
-
 }

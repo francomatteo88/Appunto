@@ -2,9 +2,11 @@ import { Component } from '@angular/core';
 import { ModalController,IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { SearchModalPage } from '../search-modal/search-modal';
+import { AdvancedSearchPage } from '../advanced-search/advanced-search';
 import "rxjs/Rx";
 import { ItemCreatePage } from '../item-create/item-create';
 import { LoginPage } from '../login/login';
+import { ProfilePage } from '../profile/profile';
 import { Storage } from '@ionic/storage';
 
 @IonicPage()
@@ -20,19 +22,42 @@ export class SearchPage {
   firstColumnItems: any = [];
   secondColumnItems: any = [];
   loading: any;
-
+  CategoryId :any;
+  CityId :any;
+  CityName:any;
+ 
   loggedIn: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient, public modalCtrl: ModalController,public  loadingCtrl: LoadingController,public storage: Storage ) { 
+ 
 
     var email: string = "";
     this.storage.get("email").then((value) => {
       if (value != null) {
         email = value;
         this.loggedIn = true;
-      }
-    });
+      } 
+    }); 
 
+    var search_string = "";
+    if (this.searchkey != undefined){
+      search_string = "&search_query="+this.searchkey;
+    }
+
+    
+    this.http.get("http://punto20171017111129.azurewebsites.net/api/Search?skip="+this.skip+search_string)
+    .subscribe(result => {      
+      this.currentItems = result;
+      this.firstColumnItems = [];
+      this.secondColumnItems = [];
+      for (var i = 0; i < this.currentItems.length; i++) { 
+        if ( i % 2 == 0){  
+          this.firstColumnItems.push(this.currentItems[i]);
+        }else{
+          this.secondColumnItems.push(this.currentItems[i]);
+        };
+      };
+     });
 
   }
 
@@ -42,11 +67,21 @@ export class SearchPage {
     });
     this.loading.present();
   };
-  
-  dismissLoading(){
+   
+  dismissLoading(){ 
     this.loading.dismiss();
   }
 
+  advancedsearch(){
+    let itemcreateModal = this.modalCtrl.create(AdvancedSearchPage, { searchkey: this.searchkey });
+
+    itemcreateModal.onDidDismiss(data => {
+    
+    });
+
+    itemcreateModal.present();
+
+  }
 
   searchmodal() {   
     let itemcreateModal = this.modalCtrl.create(SearchModalPage, { searchkey: this.searchkey });
@@ -54,7 +89,13 @@ export class SearchPage {
     itemcreateModal.onDidDismiss(data => {
       this.skip = 0;
       this.searchkey = data;
-      this.http.get("http://punto20171017111129.azurewebsites.net/api/Search?skip="+this.skip+"&search_query="+data)
+
+      var search_string = "";
+      if (this.searchkey != undefined){
+        search_string = "&search_query="+this.searchkey;
+      }
+
+      this.http.get("http://punto20171017111129.azurewebsites.net/api/Search?skip="+this.skip+search_string)
       .subscribe(result => {      
         this.currentItems = result;
         this.firstColumnItems = [];
@@ -74,7 +115,11 @@ export class SearchPage {
 
   doInfinite(infiniteScroll) {
     this.skip++;
-    this.http.get("http://punto20171017111129.azurewebsites.net/api/Search?skip="+this.skip+"&search_query="+this.searchkey)
+    var search_string = "";
+    if (this.searchkey != undefined){
+      search_string = "&search_query="+this.searchkey;
+    }
+    this.http.get("http://punto20171017111129.azurewebsites.net/api/Search?skip="+this.skip+search_string)
     .subscribe(result => {
       this.currentItems = result;
       for (var i = 0; i < this.currentItems.length; i++) { 
@@ -111,6 +156,7 @@ export class SearchPage {
   }
 
   myprofile(){
-    this.navCtrl.push(LoginPage);
+  
+    this.navCtrl.push(ProfilePage);
   }
 }
