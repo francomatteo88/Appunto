@@ -8,6 +8,8 @@ import { ItemCreatePage } from '../item-create/item-create';
 import { LoginPage } from '../login/login';
 import { ProfilePage } from '../profile/profile';
 import { Storage } from '@ionic/storage';
+import { Geolocation } from '@ionic-native/geolocation';
+
 
 @IonicPage()
 @Component({
@@ -28,7 +30,7 @@ export class SearchPage {
  
   loggedIn: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient, public modalCtrl: ModalController,public  loadingCtrl: LoadingController,public storage: Storage ) { 
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient, public modalCtrl: ModalController,public  loadingCtrl: LoadingController,public storage: Storage,private geolocation: Geolocation ) { 
  
 
     var email: string = "";
@@ -59,7 +61,25 @@ export class SearchPage {
       };
      });
 
+     this.geolocation.getCurrentPosition().then((resp) => {
+      alert(resp.coords.latitude);
+      alert(resp.coords.longitude);
+     }).catch((error) => {
+       console.log('Error getting location', error);
+     });
+     
+     let watch = this.geolocation.watchPosition();
+     watch.subscribe((data) => {
+      // data can be a set of coordinates, or an error (if an error occurred).
+      // data.coords.latitude
+      // data.coords.longitude
+     });
+
   }
+
+  
+
+
 
   presentLoadingDefault() {
     this.loading = this.loadingCtrl.create({

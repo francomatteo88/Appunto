@@ -17,7 +17,8 @@ import { ProfilePage } from '../pages/profile/profile';
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { AdvancedSearchPage } from '../pages/advanced-search/advanced-search'; 
-  
+import { Geolocation  } from '@ionic-native/geolocation';
+
 @NgModule({ 
   declarations: [ 
     MyApp,
@@ -53,6 +54,7 @@ import { AdvancedSearchPage } from '../pages/advanced-search/advanced-search';
   ],
   providers: [
     Camera,		
+    Geolocation,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

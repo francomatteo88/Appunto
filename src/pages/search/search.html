@@ -69,13 +69,13 @@
             <ion-infinite-scroll-content></ion-infinite-scroll-content>
     </ion-infinite-scroll>
 
-    <div class="bottom-tab">
+</ion-content>
+
+<ion-footer>
+    <div class="bottom-tab" >
         <div class="icon-button" style="width:33%"> <i class="material-icons" style="color:#32db8e">explore</i><br />Esplora<br /></div>
         <div class="icon-button" style="width:33%" (click)="newAdv()"><i class="material-icons">photo_camera</i><br />Nuovo<br /></div>
         <div class="icon-button" style="width:33%" *ngIf="!this.loggedIn" (click)="login()"><i class="material-icons">account_circle</i><br />Il mio Appunto<br /></div>
         <div class="icon-button" style="width:33%" *ngIf="this.loggedIn" (click)="myprofile()"><i class="material-icons">account_circle</i><br />Il mio Appunto<br /></div>      
     </div>
-  
-</ion-content>
-
-
+  </ion-footer>
