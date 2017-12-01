@@ -23,11 +23,13 @@
     "@ionic-native/camera": "^4.3.3",
     "@ionic-native/core": "4.3.2",
     "@ionic-native/geolocation": "^4.4.2",
+    "@ionic-native/google-maps": "^4.4.2",
     "@ionic-native/splash-screen": "4.3.2",
     "@ionic-native/status-bar": "4.3.2",
     "@ionic/storage": "2.0.1",
     "cordova-plugin-camera": "^2.4.1",
     "cordova-plugin-geolocation": "^3.0.0",
+    "cordova-plugin-googlemaps": "^2.1.1",
     "ionic-angular": "3.8.0",
     "ionicons": "3.0.0",
     "rxjs": "5.4.3",
@@ -42,7 +44,11 @@
   "cordova": {
     "plugins": {
       "cordova-plugin-camera": {},
-      "cordova-plugin-geolocation": {}
+      "cordova-plugin-geolocation": {},
+      "cordova-plugin-googlemaps": {
+        "API_KEY_FOR_ANDROID": "AIzaSyDZBP5wRRZJFh4xsn1KoNmpzQ8LdbGljW4",
+        "API_KEY_FOR_IOS": "AIzaSyDZBP5wRRZJFh4xsn1KoNmpzQ8LdbGljW4"
+      }
     }
   }
 }

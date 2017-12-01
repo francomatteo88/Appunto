@@ -83,4 +83,8 @@
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.11" />
     <plugin name="cordova-plugin-camera" spec="^2.4.1" />
     <plugin name="cordova-plugin-geolocation" spec="^3.0.0" />
+    <plugin name="cordova-plugin-googlemaps" spec="^2.1.1">
+        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyDZBP5wRRZJFh4xsn1KoNmpzQ8LdbGljW4" />
+        <variable name="API_KEY_FOR_IOS" value="AIzaSyDZBP5wRRZJFh4xsn1KoNmpzQ8LdbGljW4" />
+    </plugin>
 </widget>

@@ -18,6 +18,7 @@ import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { AdvancedSearchPage } from '../pages/advanced-search/advanced-search'; 
 import { Geolocation  } from '@ionic-native/geolocation';
+import { GoogleMaps  } from '@ionic-native/google-maps';
 
 @NgModule({ 
   declarations: [ 
@@ -57,6 +58,7 @@ import { Geolocation  } from '@ionic-native/geolocation';
     Geolocation,
     StatusBar,
     SplashScreen,
+    GoogleMaps,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
