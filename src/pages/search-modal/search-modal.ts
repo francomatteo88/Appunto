@@ -60,7 +60,7 @@ export class SearchModalPage {
         resultsMap.addListener('center_changed', function() {
           // 3 seconds after the center of the map has changed, pan back to the
           // marker.
-          marker.setPosition(map.getCenter());
+          marker.setPosition(resultsMap.getCenter());
         });
 
       } else {
