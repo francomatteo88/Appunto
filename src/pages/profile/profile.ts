@@ -7,7 +7,8 @@ import { ItemCreatePage } from '../item-create/item-create';
 import { LoginPage } from '../login/login';
 import { Storage } from '@ionic/storage';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
-   
+import { SearchPage } from '../search/search';
+
 @IonicPage() 
 @Component({ 
   selector: 'page-profile',
@@ -40,6 +41,14 @@ export class ProfilePage {
     });
  
   } 
+
+  logout(){
+    this.storage.set("email", null);
+    this.storage.set("password", null);
+    this.navCtrl.setRoot(SearchPage); 
+  }
+
+
   
 
   loadData(){

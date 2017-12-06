@@ -18,7 +18,7 @@ import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { AdvancedSearchPage } from '../pages/advanced-search/advanced-search'; 
 import { Geolocation  } from '@ionic-native/geolocation';
-import { GoogleMaps  } from '@ionic-native/google-maps';
+import { NativeGeocoder} from '@ionic-native/native-geocoder';
 
 @NgModule({ 
   declarations: [ 
@@ -37,8 +37,8 @@ import { GoogleMaps  } from '@ionic-native/google-maps';
     BrowserModule,  
     HttpClientModule,
     HttpModule,
-    IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicModule.forRoot(MyApp), 
+    IonicStorageModule.forRoot() 
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -56,9 +56,9 @@ import { GoogleMaps  } from '@ionic-native/google-maps';
   providers: [
     Camera,		
     Geolocation,
+    NativeGeocoder,
     StatusBar,
     SplashScreen,
-    GoogleMaps,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

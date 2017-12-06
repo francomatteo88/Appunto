@@ -87,4 +87,5 @@
         <variable name="API_KEY_FOR_ANDROID" value="AIzaSyDZBP5wRRZJFh4xsn1KoNmpzQ8LdbGljW4" />
         <variable name="API_KEY_FOR_IOS" value="AIzaSyDZBP5wRRZJFh4xsn1KoNmpzQ8LdbGljW4" />
     </plugin>
+    <plugin name="cordova-plugin-nativegeocoder" spec="^2.0.4" />
 </widget>

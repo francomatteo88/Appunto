@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ModalController,IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
+import { ModalController, IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { SearchModalPage } from '../search-modal/search-modal';
 import { AdvancedSearchPage } from '../advanced-search/advanced-search';
@@ -26,11 +26,10 @@ export class SearchPage {
   CategoryId :any;
   CityId :any;
   CityName:any;
-  map: GoogleMap;
 
   loggedIn: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient, public modalCtrl: ModalController,public  loadingCtrl: LoadingController,public storage: Storage,private geolocation: Geolocation,private googleMaps: GoogleMaps ) { 
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient, public modalCtrl: ModalController,public  loadingCtrl: LoadingController,public storage: Storage,private geolocation: Geolocation) { 
  
 
     var email: string = "";
@@ -61,12 +60,12 @@ export class SearchPage {
       };
      });
 
-     this.geolocation.getCurrentPosition().then((resp) => {
-      alert(resp.coords.latitude);
-      alert(resp.coords.longitude);
-     }).catch((error) => {
-       console.log('Error getting location', error);
-     });
+    //  this.geolocation.getCurrentPosition().then((resp) => {
+    //   alert(resp.coords.latitude);
+    //   alert(resp.coords.longitude);
+    //  }).catch((error) => {
+    //    console.log('Error getting location', error);
+    //  });
      
      let watch = this.geolocation.watchPosition();
      watch.subscribe((data) => {
@@ -78,9 +77,6 @@ export class SearchPage {
   }
 
   
-
-
-
   presentLoadingDefault() {
     this.loading = this.loadingCtrl.create({
       content: 'Ricerca in corso...'

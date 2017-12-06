@@ -5,7 +5,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon> 
     </button>
-    <ion-title>I miei annunci</ion-title>
+    <ion-title>I miei annunci - {{this.email}}</ion-title>
   </ion-navbar>
 </ion-header> 
  
@@ -28,6 +28,10 @@
     </ion-card>
             </ion-col> 
         </ion-row>
+
+        <button ion-button (click)="logout()">Log out</button>
+
+
     </ion-grid>
 </ion-content>
 
