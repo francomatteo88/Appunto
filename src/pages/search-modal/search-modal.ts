@@ -3,19 +3,24 @@ import { NavController, NavParams,ViewController,Searchbar } from 'ionic-angular
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
 
+declare var google: any;
+
 @Component({
   selector: 'page-search-modal', 
   templateUrl: 'search-modal.html'
 }) 
 export class SearchModalPage {
- 
-  searchkey :any;
+  
+  searchkey :any; 
   @ViewChild('mainSearchbar') searchBar: Searchbar;
   @ViewChild('map') mapElement: ElementRef;
 
   constructor(public navCtrl: NavController, navParams: NavParams, public viewCtrl: ViewController,private geolocation: Geolocation,private nativeGeocoder: NativeGeocoder) {
      this.searchkey = navParams.get('searchkey');
-     this.loadMap();
+     
+      this.loadMap();
+    
+
   }  
   
   ionViewDidEnter() {
@@ -33,8 +38,7 @@ export class SearchModalPage {
   }
   
 
-  
-  
+
    geocodeAddress(geocoder, address) {
     geocoder.geocode({'address': address}, function(results, status) {
       if (status === 'OK') {
