@@ -46,7 +46,7 @@ export class SearchModalPage {
         }
 
         var resultsMap = new google.maps.Map(document.getElementById("map"), mapOptions);
-
+ 
         resultsMap.setCenter(results[0].geometry.location);
         var marker = new google.maps.Marker({
           map: resultsMap,
