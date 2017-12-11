@@ -18,7 +18,6 @@ import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { AdvancedSearchPage } from '../pages/advanced-search/advanced-search'; 
 import { Geolocation  } from '@ionic-native/geolocation';
-import { NativeGeocoder} from '@ionic-native/native-geocoder';
 
 @NgModule({ 
   declarations: [ 
@@ -56,7 +55,6 @@ import { NativeGeocoder} from '@ionic-native/native-geocoder';
   providers: [
     Camera,		
     Geolocation,
-    NativeGeocoder,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
