@@ -16,7 +16,7 @@ export class ItemDetailPage {
   }
 
   newchat(){
-
+    //chiamata per creare chat
   }
 
 } 

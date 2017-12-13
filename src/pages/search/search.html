@@ -8,56 +8,46 @@
     <div class="search-bar" (click)="searchmodal()" > 
         <ion-icon name="search"></ion-icon>{{this.searchkey}}
     </div>   
-    <ion-buttons right>
+    <!-- <ion-buttons right>
         <button ion-button icon-only (click)="advancedsearch()" class="advanced-search" > 
             <ion-icon name="options"></ion-icon>
         </button> 
-    </ion-buttons> 
+    </ion-buttons>  -->
   </ion-navbar>
 </ion-header>
-<ion-content>
-
-   
+<ion-content> 
    <ion-grid> 
         <ion-row>
             <ion-col col-6>
                 <!-- <ion-list  [virtualScroll]="firstColumnItems">  -->
                 <!-- <ion-item *ngFor="let item of firstColumnItems"> -->
 
-                  <ion-card (click)="openItem(item)" *ngFor="let item of firstColumnItems" >
-                    
-                 
-                    <div *ngIf="!item.BlobFiles[0]" style="width:100px; padding:50%;border: 1px solid lightgrey;background-color: lightgrey;" ></div>
-                        
-                    <img *ngIf="item.BlobFiles[0]" src="https://puntostorage.blob.core.windows.net/punto-public/{{item.BlobFiles[0].BlobFileId}}.jpeg"/>
-                            
+                  <ion-card (click)="openItem(item)" *ngFor="let item of firstColumnItems" >        
+                    <div *ngIf="!item.BlobFiles[0]" style="width:100px; padding:50%;border: 1px solid lightgrey;background-color: lightgrey;" ></div>         
+                    <img *ngIf="item.BlobFiles[0]" src="https://puntostorage.blob.core.windows.net/punto-public/{{item.BlobFiles[0].BlobFileId}}.jpeg"/>            
                     <ion-card-content>
-                        <p>
+                        <p> 
                         {{item.Title}}
                         </p>
                         </ion-card-content>
                     </ion-card>
 
                 <!-- </ion-item> -->
-                <!-- </ion-list>  -->
+                <!-- </ion-list> -->
             </ion-col>
           <ion-col col-6>
 
       <!-- <ion-list [virtualScroll]="secondColumnItems"> -->
           <!-- <ion-item *ngFor="let item of secondColumnItems" > -->
 
-          <ion-card (click)="openItem(item)" *ngFor="let item of secondColumnItems" >
-             
+          <ion-card (click)="openItem(item)" *ngFor="let item of secondColumnItems" >             
               <div *ngIf="!item.BlobFiles[0]" style="width:100px; padding:50%;border: 1px solid lightgrey;background-color: lightgrey;" ></div>
-            
-              <img *ngIf="item.BlobFiles[0]" src="https://puntostorage.blob.core.windows.net/punto-public/{{item.BlobFiles[0].BlobFileId}}.jpeg"/>
-                
+              <img *ngIf="item.BlobFiles[0]" src="https://puntostorage.blob.core.windows.net/punto-public/{{item.BlobFiles[0].BlobFileId}}.jpeg"/>           
               <ion-card-content>
                   <p>
                     {{item.Title}}
                   </p> 
-              </ion-card-content>
-              
+              </ion-card-content> 
             </ion-card>
 
         <!-- </ion-item>       -->
@@ -75,9 +65,10 @@
 
 <ion-footer>
     <div class="bottom-tab" >
-        <div class="icon-button" style="width:33%"> <i class="material-icons" style="color:#32db8e">explore</i><br />Esplora<br /></div>
-        <div class="icon-button" style="width:33%" (click)="newAdv()"><i class="material-icons">photo_camera</i><br />Nuovo<br /></div>
-        <div class="icon-button" style="width:33%" *ngIf="!this.loggedIn" (click)="login()"><i class="material-icons">account_circle</i><br />Il mio Appunto<br /></div>
-        <div class="icon-button" style="width:33%" *ngIf="this.loggedIn" (click)="myprofile()"><i class="material-icons">account_circle</i><br />Il mio Appunto<br /></div>      
+        <div class="icon-button" style="width:25%"> <i class="material-icons" style="color:#32db8e;padding-bottom: 0px;">explore</i><br />Esplora<br /></div>
+        <div class="icon-button" style="width:25%" (click)="newAdv()"><i class="material-icons" style="padding-bottom: 0px;">photo_camera</i><br />Nuovo<br /></div>
+        <div class="icon-button" style="width:25%" *ngIf="this.loggedIn" (click)="login()"><i style="padding-bottom: 0px;" class="material-icons">chat_bubble</i><br />Conversazioni<br /></div>
+        <div class="icon-button" style="width:25%" *ngIf="!this.loggedIn" (click)="login()"><i style="padding-bottom: 0px;" class="material-icons">account_circle</i><br />Entra<br /></div>
+        <div class="icon-button" style="width:25%" *ngIf="this.loggedIn" (click)="myprofile()"><i style="padding-bottom: 0px;" class="material-icons">account_circle</i><br />I miei annunci<br /></div>      
     </div>
-  </ion-footer>
+ </ion-footer>

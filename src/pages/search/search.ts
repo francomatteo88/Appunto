@@ -11,7 +11,7 @@ import { Storage } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation';
 
 @IonicPage()
-@Component({
+@Component({ 
   selector: 'page-search',
   templateUrl: 'search.html'
 })
