@@ -11,6 +11,7 @@ import { ItemCreatePage } from '../pages/item-create/item-create';
 import { SearchModalPage } from '../pages/search-modal/search-modal'; 
 import { SearchCityPage } from '../pages/search-city/search-city'; 
 import { LoginPage } from '../pages/login/login';
+import { ChatPage } from '../pages/chat/chat';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { RegisterPage } from '../pages/register/register';
 import { ProfilePage } from '../pages/profile/profile';
@@ -29,6 +30,7 @@ import { Geolocation  } from '@ionic-native/geolocation';
     AdvancedSearchPage, 
     RegisterPage,  
     WelcomePage, 
+    ChatPage,
     ProfilePage,  
     LoginPage  
   ],
@@ -50,6 +52,7 @@ import { Geolocation  } from '@ionic-native/geolocation';
     WelcomePage,
     RegisterPage,
     ProfilePage,
+    ChatPage,
     LoginPage
   ],
   providers: [

@@ -7,6 +7,7 @@ import "rxjs/Rx";
 import { ItemCreatePage } from '../item-create/item-create';
 import { LoginPage } from '../login/login';
 import { ProfilePage } from '../profile/profile';
+import { ChatPage } from '../chat/chat';
 import { Storage } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation';
 
@@ -169,6 +170,10 @@ export class SearchPage {
 
   login(){
     this.navCtrl.push(LoginPage);
+  }
+
+  chat(){
+    this.navCtrl.push(ChatPage);
   }
 
   myprofile(){

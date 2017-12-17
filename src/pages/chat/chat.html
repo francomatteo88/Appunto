@@ -1,0 +1,35 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<ion-header> 
+  <ion-navbar color="custom-green">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon> 
+    </button>
+    <ion-title>Le mie chat - {{this.email}}</ion-title>
+  </ion-navbar>
+</ion-header> 
+ 
+<ion-content>
+    <ion-grid> 
+        <ion-row>
+            <ion-col col-12> 
+   
+  <ion-card (click)="openChat(item)" *ngFor="let item of chat" >
+  
+      <ion-card-content>
+
+        {{item.Advertisement.Title}}
+
+
+    </ion-card-content>
+  
+   
+    </ion-card>
+            </ion-col> 
+        </ion-row>
+
+
+    </ion-grid>
+</ion-content>
+
+

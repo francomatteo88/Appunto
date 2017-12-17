@@ -67,7 +67,7 @@
     <div class="bottom-tab" >
         <div class="icon-button" style="width:25%"> <i class="material-icons" style="color:#32db8e;padding-bottom: 0px;">explore</i><br />Esplora<br /></div>
         <div class="icon-button" style="width:25%" (click)="newAdv()"><i class="material-icons" style="padding-bottom: 0px;">photo_camera</i><br />Nuovo<br /></div>
-        <div class="icon-button" style="width:25%" *ngIf="this.loggedIn" (click)="login()"><i style="padding-bottom: 0px;" class="material-icons">chat_bubble</i><br />Conversazioni<br /></div>
+        <div class="icon-button" style="width:25%" *ngIf="this.loggedIn" (click)="chat()"><i style="padding-bottom: 0px;" class="material-icons">chat_bubble</i><br />Conversazioni<br /></div>
         <div class="icon-button" style="width:25%" *ngIf="!this.loggedIn" (click)="login()"><i style="padding-bottom: 0px;" class="material-icons">account_circle</i><br />Entra<br /></div>
         <div class="icon-button" style="width:25%" *ngIf="this.loggedIn" (click)="myprofile()"><i style="padding-bottom: 0px;" class="material-icons">account_circle</i><br />I miei annunci<br /></div>      
     </div>

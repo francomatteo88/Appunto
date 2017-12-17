@@ -28,9 +28,9 @@
 
 <ion-footer>
 
-  <form (ngSubmit)="newchat()" style="display:flex">
-    <ion-input placeholder="Scrivi un messaggio a {{item.User.FirstName}}">Ciao {{item.User.FirstName}} è ancora disponibile?</ion-input>
-    <button type="submit" ion-button strong class="button-block" color="custom-green">
+  <form (ngSubmit)="newchat()" style="display:flex" [formGroup]="chat">
+    <ion-input placeholder="Scrivi un messaggio a {{item.User.FirstName}}" formControlName="Message">Ciao {{item.User.FirstName}} è ancora disponibile?</ion-input>
+    <button type="submit" ion-button strong class="button-block" color="custom-green" >
         <span color="primary">
           <i class="material-icons">send</i>
         </span>
